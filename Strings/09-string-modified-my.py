@@ -1,7 +1,4 @@
-"""
-# Given a matrix, zero out every row and column that contains a zero.
 
-"""
 
 def operate(s1,s2):
     if len(s1)!=len(s2):

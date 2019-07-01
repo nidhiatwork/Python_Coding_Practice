@@ -7,7 +7,6 @@ def find_pairs_brute(l,k):
     return ans
 
 def findPairs(lst, k): 
-      
     return [(e1, e2) for e1 in lst  
             for e2 in lst if (e1-e2 == k)] 
 
@@ -26,7 +25,6 @@ def find_pairs_lookup(l,k):
         elif item-k in l:
             ans.add((item-k,item))
     return ans
-
 
 l = [1, 7, 5, 9, 2, 12, 3]
 print(find_Pairs(l,2))
