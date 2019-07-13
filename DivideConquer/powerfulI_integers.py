@@ -19,3 +19,15 @@ Explanation:
 9 = 2^3 + 3^0
 10 = 2^0 + 3^2
 '''
+
+def powerfulIntegers(x, y, bound):
+    ans = set()
+    # 2**18 > bound
+    for i in range(18):
+        for j in range(18):
+            v = x**i + y**j
+            if v <= bound:
+                ans.add(v)
+    return list(ans)
+
+print(powerfulIntegers(2,3,10))
