@@ -22,7 +22,6 @@ def decodestring_easy(mystr):
 		    while i<len(mystr) and mystr[i] != '}':
 			    num = num*10 + int(mystr[i])
 			    i += 1
-
 		    pre = stack.pop()
 		    temp = ""
 		    while num!=0:
@@ -32,13 +31,10 @@ def decodestring_easy(mystr):
 			# print(temp)
 	    else: 
 		    stack.append(c)
-
 	    i += 1
-
     res_str = ""
     while len(stack)!=0:
 	    res_str = stack.pop() + res_str
-
 
     return res_str
 

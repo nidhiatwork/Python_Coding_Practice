@@ -5,7 +5,6 @@ Return a list of all powerful integers that have value less than or equal to bou
 
 You may return the answer in any order.  In your answer, each value should occur at most once.
 
- 
 Example 1:
 
 Input: x = 2, y = 3, bound = 10
@@ -23,8 +22,8 @@ Explanation:
 def powerfulIntegers(x, y, bound):
     ans = set()
     # 2**18 > bound
-    for i in range(18):
-        for j in range(18):
+    for i in range(20):
+        for j in range(20):
             v = x**i + y**j
             if v <= bound:
                 ans.add(v)

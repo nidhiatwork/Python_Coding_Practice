@@ -1,6 +1,4 @@
 
-import collections
-
 def operate(a):
     n = len(a)
     rows,cols = 0,0
