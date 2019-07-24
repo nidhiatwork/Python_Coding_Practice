@@ -19,6 +19,23 @@ Explanation:
 9 = 2^3 + 3^0
 10 = 2^0 + 3^2
 '''
+
+def third_largest_num_google(a):
+    max = a[0]
+    mid = -1
+    min = -1
+    for i in range(1,len(a)):
+        if a[i]>max:
+            min = mid
+            mid = max
+            max = a[i]
+        elif a[i]>mid:
+            min = mid
+            mid = a[i]
+        elif a[i]>min:
+            min = a[i]
+    return min
+
 def pick_third_largest(A):
     n = len(A)
     if n<3:
@@ -26,6 +43,7 @@ def pick_third_largest(A):
     mergeSort(A)
     return A[2]
 	
+
 def mergeSort(A):
     n = len(A)
     if n>1:
