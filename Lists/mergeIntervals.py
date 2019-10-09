@@ -12,7 +12,7 @@ Input: [[1,4],[4,5]]
 Output: [[1,5]]
 Explanation: Intervals [1,4] and [4,5] are considered overlapping.
 '''
-def merge (intervals):
+def mergeIntervals (intervals):
     merged=[]
     intervals.sort(key=lambda p:p[0])
     for interval in intervals:
@@ -28,4 +28,4 @@ def merge (intervals):
     return merged
 
 intervals = [[1,2],[3,4],[4,6],[6,12],[13,15]]
-print(merge(intervals))
+print(mergeIntervals(intervals))

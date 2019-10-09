@@ -20,7 +20,6 @@ Output:
   [0,1,0]
 ]
 '''
-#To do
 def gameOfLife(board):
     """
     Do not return anything, modify board in-place instead.
