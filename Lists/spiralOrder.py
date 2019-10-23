@@ -1,5 +1,5 @@
 '''
-Given a matrix of m x n elements (m rows, n columns), return all elements of the matrix in spiral order.
+Given matrix matrix of m x n elements (m rows, n columns), return all elements of the matrix in spiral order.
 
 Example 1:
 
@@ -13,10 +13,12 @@ Output: [1,2,3,6,9,8,7,4,5]
 
 '''
 
-def spiralOrder(a):
+def spiralOrder(matrix):
+    
+    ans = []
     #Setting Boundaries for the given matrix
-    m = len(a)
-    n = len(a[0])
+    m = len(matrix)
+    n = len(matrix[0])
     
     t = 0
     b = m-1
@@ -39,27 +41,28 @@ def spiralOrder(a):
         
         if dr ==0:
             for i in range(l,r+1):
-                print (a[t][i], end=" ")
+                ans.append(matrix[t][i])
             t +=1
             dr = 1
             
         elif dr ==1:
             for i in range(t,b+1):
-                print (a[i][r], end=" ")
+                ans.append(matrix[i][r])
             r -=1 
             dr = 2
             
         elif dr ==2:
             for i in range(r,l-1,-1):
-                print (a[b][i], end=" ")
+                ans.append(matrix[b][i])
             b -=1
             dr = 3
             
         elif dr ==3:
             for i in range(b,t-1,-1):
-                print (a[i][l], end=" ")
+                ans.append(matrix[i][l])
             l +=1
             dr = 0
+    return ans
 
 
 matrix = [
