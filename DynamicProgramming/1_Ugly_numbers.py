@@ -25,7 +25,6 @@ def findUglyNum(n):
     next_multiple_of_3 = ugly[i3]*3
     next_multiple_of_5 = ugly[i5]*5;
 
-
     for i in range(1,n):
         ugly_num = min(next_multiple_of_2,next_multiple_of_3,next_multiple_of_5)
         ugly[i]=ugly_num
