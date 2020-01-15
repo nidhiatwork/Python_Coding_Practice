@@ -15,4 +15,4 @@ def dp_func(n):
 	return
 
 # Driver code 
-dp_func(5)
+print(dp_func(5))
