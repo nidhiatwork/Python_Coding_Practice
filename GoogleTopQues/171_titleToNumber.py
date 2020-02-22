@@ -11,11 +11,11 @@ For example:
     '''
 
 def titleToNumber(s):
-    # ans = 0
-    # for i,c in enumerate(reversed(s)):
-    #     ans +=(ord(c)-64)*(26**i)
-    # return ans
-    return sum([ (ord(c)-64)*(26**i) for i,c in enumerate(reversed(s))])
+    ans = 0
+    for i,c in enumerate(reversed(s)):
+        ans +=(ord(c)-64)*(26**i)
+    return ans
+    # return sum([ (ord(c)-64)*(26**i) for i,c in enumerate(reversed(s))])
 
 s = 'AB'
 print(titleToNumber(s))

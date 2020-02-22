@@ -7,7 +7,7 @@ It doesn't matter what you leave beyond the returned length.
 '''
 
 def removeDuplicates(nums):
-    if len(nums) == 0:
+    if not nums:
         return 0
     i = 0
     for j in range(1,len(nums)):
