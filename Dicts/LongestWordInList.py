@@ -8,11 +8,10 @@ Explanation:
 Both "apply" and "apple" can be built from other words in the dictionary. However, "apple" is lexicographically smaller than "apply".
 '''
 def longestWord(words):
-    wordset = set(words)
     words.sort(key = lambda x: (-len(x),x))
     print(words)
     for word in words:
-            if all(word[:k] in wordset for k in range(1, len(word))):
+            if all(word[:k] in words for k in range(1, len(word))):
                 return word
     return ""
 

@@ -3,6 +3,8 @@ data1 = [ { 'a':'A', 'b':2, 'c':3.0 } ]
 print('BEFORE:')
 print(data1)
 data1_string = pickle.dumps(data1) 
+print('Pickled data')
+print(data1_string)
 data2 = pickle.loads(data1_string) 
 print('AFTER:')
 print(data2)

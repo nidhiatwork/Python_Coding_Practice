@@ -4,15 +4,16 @@ Given four lists A, B, C, D of integer values, compute how many tuples (i, j, k,
 import collections
 
 def fourSumCount(A, B, C, D):
-    hashtable = {}
+    hashtable = collections.Counter()
     for a in A:
         for b in B :
-            hashtable[a+b] = hashtable.get(a+b,0)+1
+            hashtable[a+b]+=1
     count = 0         
     for c in C :
         for d in D :
-            count +=hashtable.get(-(c+d),0)
+            count +=hashtable[-(c+d)]
     return count
+
 A = [ 1, 2]
 B = [-2,-1]
 C = [-1, 2]

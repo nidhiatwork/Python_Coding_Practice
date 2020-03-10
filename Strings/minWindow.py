@@ -12,7 +12,8 @@ If there is such window, you are guaranteed that there will always be only one u
 '''
 #To do
 import sys
-from collections import Counter
+import collections
+
 def minWindow_mySolution(s,t):
     l,r=0,0
     minm = sys.maxsize
@@ -30,15 +31,30 @@ def minWindow_mySolution(s,t):
     return window
 
 def occurrence(ss,tt):
-    d = Counter(ss)
+    d = collections.Counter(ss)
     for c in tt:
         if c not in d or d[c]==0:
             return False
         d[c]-=1
     return True
 
+def minWindow_2(s, t):
+        need, missing = collections.Counter(t), len(t)
+        i = I = J = 0
+        for j, c in enumerate(s, 1):
+            missing -= need[c] > 0
+            need[c] -= 1
+            if not missing:
+                while i < j and need[s[i]] < 0:
+                    need[s[i]] += 1
+                    i += 1
+                if not J or j - i <= J - I:
+                    I, J = i, j
+        return s[I:J]
+
+
 def minWindow(s, t):
-    need = Counter(t)            #hash table to store char frequency
+    need = collections.Counter(t)            #hash table to store char frequency
     missing = len(t)                         #total number of chars we care
     start, end = 0, 0
     i = 0
@@ -50,15 +66,15 @@ def minWindow(s, t):
             while i < j and need[s[i]] < 0:  #remove chars to find the real start
                 need[s[i]] += 1
                 i += 1
-            need[s[i]] += 1                  #make sure the first appearing char satisfies need[char]>0
-            missing += 1                     #we missed this first char, so add missing by 1
+            need[s[i]] += 1                #ensure the first appearing char satisfies need[char]>0
+            missing += 1                   #we missed this first char, so add missing by 1
             if end == 0 or j-i < end-start:  #update window
                 start, end = i, j
-            i += 1                           #update i to start+1 for next window
+            i += 1                         #update i to start+1 for next window
     return s[start:end]
 
-s="cabwefgewcwaefgcf"
-t="cae"
-# s="ADOBECODEBANC"
-# t="ABC"
+# s="cabwefgewcwaefgcf"
+# t="cae"
+s="ADOBECODEBANC"
+t="ABC"
 print(minWindow(s,t))
