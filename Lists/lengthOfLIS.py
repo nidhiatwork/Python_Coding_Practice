@@ -16,15 +16,10 @@ def lengthOfLIS(nums):
     for i in range(1,len(nums)):
         maxval = 0
         for j in range(i):
-            print("comparing from {} to {}".format(nums[i],nums[j]))
             if nums[i] > nums[j]:
-                print("{} > {}".format(nums[i],nums[j]))
                 maxval = max(maxval,dp[j])
-                print("Set maxval to ",maxval)
         dp[i]= maxval+1
-        print("Set dp[{}] to {}".format(i,dp[i]))
         maxans = max(maxans, dp[i])
-        print("Set maxans to ",maxans)
     return maxans
 
 nums = [10,9,2,5,3,7,101,18]

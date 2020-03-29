@@ -10,27 +10,14 @@ Explanation: 274 + 181 = 455
 def addToArrayForm(A, K):
         A[-1] += K
         for i in range(len(A) - 1, -1, -1):
-            carry, A[i] = divmod(A[i], 10)
+            carry = A[i]//10
+            A[i] = A[i]%10
             if i: A[i-1] += carry
         while carry:
             A = [carry%10] + A
             carry//=10
         return A
 
-
-A = [2,1,5]
-K = 806
+A = [2,5,9]
+K = 42
 print(addToArrayForm(A,K))
-
-
-'''
-class Solution(object):
-    def addToArrayForm(self, A, K):
-        A[-1] += K
-        for i in xrange(len(A) - 1, -1, -1):
-            carry, A[i] = divmod(A[i], 10)
-            if i: A[i-1] += carry
-        if carry:
-            A = map(int, str(carry)) + A
-        return A
-        '''

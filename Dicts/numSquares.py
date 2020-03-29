@@ -25,7 +25,26 @@ def numSquares(n):
                     break
                 temp.add(x-y)
         toCheck = temp
+        print("to check: ",toCheck)
 
     return cnt
+
+import sys
+def numSquares_1(n):
+    if (n <= 0):
+        return 0
+        
+    # // cntPerfectSquares[i] = the least number of perfect square numbers 
+    # // which sum to i. Note that cntPerfectSquares[0] is 0.
+    cntPerfectSquares=[sys.maxsize]*(n+1)
+    cntPerfectSquares[0] = 0
+    for i in range(1,n+1):
+        # // For each i, it must be the sum of some number (i - j*j) and 
+        # // a perfect square number (j*j).
+        j = 1
+        while j*j <= i:
+            cntPerfectSquares[i] = min(cntPerfectSquares[i], cntPerfectSquares[i - j*j] + 1)
+            j+=1
+    return cntPerfectSquares[-1]
 
 print(numSquares(12))

@@ -13,7 +13,17 @@ def duplicateZeros(arr):
             arr.pop()
             i+=1
         i+=1
+def duplicateZeros_1(arr):
+    zeroes = arr.count(0)
+    n = len(arr)
+    for i in range(n-1, -1, -1):
+        if i + zeroes < n:
+            arr[i + zeroes] = arr[i]
+        if arr[i] == 0: 
+            zeroes -= 1
+            if i + zeroes < n:
+                arr[i + zeroes] = 0
 
 arr = [1,0,2,4,0,4,5,9]
-duplicateZeros(arr)
+duplicateZeros_1(arr)
 print(arr)

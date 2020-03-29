@@ -12,7 +12,8 @@ class RandomizedSet(object):
         """
         Initialize your data structure here.
         """
-        self.nums, self.pos = [], {}
+        self.nums = []
+        self.pos = dict()
 
     def insert(self, val):
         """
@@ -21,7 +22,7 @@ class RandomizedSet(object):
         :rtype: bool
         """
         if val not in self.pos:
-            self.nums.append(val)
+            self.nums.append(val) #O(1) for lists
             self.pos[val] = len(self.nums) - 1
             return True
         return False
@@ -32,10 +33,11 @@ class RandomizedSet(object):
         :type val: int
         :rtype: bool
         """
-        if val in self.pos:
+        if val in self.pos: #O(1) for dicts
             idx, last = self.pos[val], self.nums[-1]
             self.nums[idx], self.pos[last] = last, idx
-            self.nums.pop(); self.pos.pop(val, 0)
+            self.nums.pop()
+            del self.pos[val]
             return True
         return False
 
@@ -53,4 +55,4 @@ param_1 = obj.insert(5)
 param_1 = obj.insert(9)
 param_1 = obj.insert(3)
 param_2 = obj.remove(5)
-param_3 = obj.getRandom()
+print(obj.getRandom())

@@ -11,6 +11,5 @@ Explanation: n is 2, and the maximum sum of pairs is 4 = min(1, 2) + min(3, 4).
 def arrayPairSum(nums):
   return sum(sorted(nums)[::2])
 
-
 nums = [1,2,3,2]
 print(arrayPairSum(nums))

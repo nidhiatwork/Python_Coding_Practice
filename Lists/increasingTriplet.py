@@ -13,5 +13,5 @@ def increasingTriplet(nums):
             return True
     return False
 
-nums = [1,1,2,3,4,0]
+nums = [1,1,1,1,1,1,1,1]
 print(increasingTriplet(nums))

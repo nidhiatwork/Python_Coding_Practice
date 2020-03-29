@@ -30,6 +30,5 @@ def findDuplicate_TortoiseHare_cycledetection(nums):
         ptr2 = nums[ptr2]
     return ptr1
     
-
 nums = [1, 4, 6, 6, 6, 2, 3]
 print(findDuplicate_TortoiseHare_cycledetection(nums))

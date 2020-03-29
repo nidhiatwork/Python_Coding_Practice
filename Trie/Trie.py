@@ -1,42 +1,95 @@
-#To do
-class Trie(object):
-    
-    def __init__(self):
-        """
-        Initialize your data structure here.
-        """
-        
+# Python program for insert and search 
+# operation in a Trie 
 
-    def insert(self, word):
-        """
-        Inserts a word into the trie.
-        :type word: str
-        :rtype: None
-        """
-        
+class TrieNode: 
+	
+	# Trie node class 
+	def __init__(self): 
+		self.children = [None]*26
 
-    def search(self, word):
-        """
-        Returns if the word is in the trie.
-        :type word: str
-        :rtype: bool
-        """
+		# isEndOfWord is True if node represent the end of the word 
+		self.isEndOfWord = False
 
+class Trie:
+	
+	# Trie data structure class 
+	def __init__(self): 
+		self.root = TrieNode()
 
-    def startsWith(self, prefix):
-        """
-        Returns if there is any word in the trie that starts with the given prefix.
-        :type prefix: str
-        :rtype: bool
-        """
-        
+	def _charToIndex(self,ch): 
+		
+		# private helper function 
+		# Converts key current character into index 
+		# use only 'a' through 'z' and lower case 
+		
+		return ord(ch)-ord('a') 
 
 
-# Your Trie object will be instantiated and called as such:
-trie = Trie()
-print(trie.insert("apple"))
-print(trie.search("apple"))
-print(trie.search("app"))
-print(trie.startsWith("app"))
-print(trie.insert("app"))
-print(trie.search("app"))  
+	def insert(self,key): 
+		
+		# If not present, inserts key into trie 
+		# If the key is prefix of trie node, 
+		# just marks leaf node 
+		pCrawl = self.root 
+		length = len(key) 
+		for level in range(length): 
+			index = self._charToIndex(key[level]) 
+
+			# if current character is not present 
+			if not pCrawl.children[index]: 
+				pCrawl.children[index] = TrieNode()
+			pCrawl = pCrawl.children[index] 
+
+		# mark last node as leaf 
+		pCrawl.isEndOfWord = True
+
+	def search(self, key): 
+		
+		# Search key in the trie 
+		# Returns true if key presents 
+		# in trie, else false 
+		pCrawl = self.root 
+		length = len(key) 
+		for level in range(length): 
+			index = self._charToIndex(key[level]) 
+			if not pCrawl.children[index]: 
+				return False
+			pCrawl = pCrawl.children[index] 
+
+		return pCrawl != None and pCrawl.isEndOfWord
+
+	def startsWith(self, key): 
+		
+		# Search key in the trie 
+		# Returns true if key presents 
+		# in trie, else false 
+		pCrawl = self.root 
+		length = len(key) 
+		for level in range(length): 
+			index = self._charToIndex(key[level]) 
+			if not pCrawl.children[index]: 
+				return False
+			pCrawl = pCrawl.children[index] 
+
+		return pCrawl != None
+# driver function 
+
+# Input keys (use only 'a' through 'z' and lower case) 
+keys = ["the","a","there","anaswe","any", 
+        "by","their"] 
+output = ["Not present in trie", 
+        "Present in trie"] 
+
+# Trie object 
+t = Trie() 
+
+# Construct trie 
+for key in keys: 
+    t.insert(key) 
+
+# Search for different keys 
+print("{} ---- {}".format("the",output[t.search("the")])) 
+print("{} ---- {}".format("these",output[t.search("these")])) 
+print("{} ---- {}".format("their",output[t.search("their")])) 
+print("{} ---- {}".format("thaw",output[t.search("thaw")]))
+print("{} ---- {}".format("thei",output[t.startsWith("thei")]))

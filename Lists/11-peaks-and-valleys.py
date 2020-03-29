@@ -13,7 +13,6 @@ def peaks_and_valleys(array):
       if array[ix] > array[ix + 1]:
         array[ix], array[ix + 1] = array[ix + 1], array[ix]
 
-
 import unittest
 
 class Test(unittest.TestCase):
