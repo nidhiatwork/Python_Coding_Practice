@@ -1,26 +1,25 @@
-def partition(arr,low,high): 
-    i = ( low-1 )         
-    pivot = arr[high]
-  
-    for j in range(low , high): 
-        if   arr[j] <= pivot: 
-            i = i+1 
-            print("Swapping: ", arr[i],arr[j])
-            arr[i],arr[j] = arr[j],arr[i]
-            print(arr)
+def partition(nums,low,high): 
+    pivot_index = (low+high)//2
+    nums[pivot_index],nums[high] = nums[high], nums[pivot_index]
+    i=low
+    for j in range(low, high): 
+        if   nums[j] <= nums[high]: 
+            print("Swapping: ", nums[i],nums[j])
+            nums[i],nums[j] = nums[j],nums[i]
+            i+=1
     
-    print("Final swap: ",arr[i+1],arr[high])  
-    arr[i+1],arr[high] = arr[high],arr[i+1] 
-    print(arr)
-    return ( i+1 )
+    print("Final swap: ",nums[i],nums[high])  
+    nums[i],nums[high] = nums[high],nums[i] 
+    print(nums)
+    return i
   
-def quickSort(arr,low,high): 
+def quick_sort(nums,low,high): 
     if low < high: 
-        pi = partition(arr,low,high) 
-        quickSort(arr, low, pi-1) 
-        quickSort(arr, pi+1, high) 
+        pivot_index = partition(nums,low,high) 
+        quick_sort(nums, low, pivot_index-1) 
+        quick_sort(nums, pivot_index+1, high) 
   
-arr = [10, 3, 8, 9, 1, 5]
-n = len(arr)
-quickSort(arr,0,n-1) 
-print(arr) 
+nums = [10, 3, 8, 9, 1, 5]
+n = len(nums)
+quick_sort(nums,0,n-1) 
+print(nums) 

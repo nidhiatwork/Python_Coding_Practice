@@ -1,4 +1,4 @@
-def insertionSort(arr):
+def selection_sort(arr):
     n = len(arr)
     for i in range(n):
         min_idx = i
@@ -8,4 +8,4 @@ def insertionSort(arr):
         arr[i], arr[min_idx] = arr[min_idx], arr[i]
     return arr
 
-print(insertionSort([2,6,3,9,0,4]))
+print(selection_sort([2,6,3,9,0,4]))
