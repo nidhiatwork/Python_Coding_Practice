@@ -15,7 +15,7 @@ def removeElement(nums, val):
             n-=1
         else:
             i+=1
-    return i+1
+    return n
 
 A = [1,2,3,4,5,2,4]
 val = 4

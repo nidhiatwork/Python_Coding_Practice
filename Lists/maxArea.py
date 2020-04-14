@@ -10,8 +10,7 @@ def maxArea_bruteForce(height):
     for i in range(len(height)):
         for j in range(i+1, len(height)):
             area = (j-i)*min(height[i], height[j])
-            if area > max_area:
-                max_area = area
+            max_area = max(area, max_area)
     return max_area
 
 def maxArea_optimal(height):
@@ -19,12 +18,12 @@ def maxArea_optimal(height):
     l = 0
     r = len(height) - 1
     while (l < r):
-        maxarea = max(maxarea, min(height[l], height[r]) * (r - l))
+        current_area = (r - l)* min(height[l], height[r]) 
+        maxarea = max(maxarea, current_area)
         if (height[l] < height[r]):
             l+=1
         else:
             r-=1
-
     return maxarea
 
 height = [1,8,6,2,5,4,8,3,7] 

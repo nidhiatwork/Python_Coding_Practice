@@ -34,4 +34,4 @@ def permute_backtrack(nums):
         return ans
 
 print(permute_iteration([1,2,3]))
-print(permute_backtrack([1,2,3]))
+# print(permute_backtrack([1,2,3]))

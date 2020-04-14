@@ -9,7 +9,7 @@ Example:
 
 Input:
 nums1 = [1,2,3,0,0,0], m = 3
-nums2 = [2,5,6],       n = 3
+nums2 = [1,1,1],       n = 3
 
 Output: [1,2,2,3,5,6]
 '''
@@ -27,9 +27,9 @@ def mergeLists(nums1, m, nums2, n):
       print(nums1)
       
 
-nums1 = [1,5,6,9,10,0,0,0]
-m = 5
-nums2 = [5,7,12]
+nums1 = [1,2,3,0,0,0]
+m = 3
+nums2 = [1,1,3]
 n = 3
 mergeLists(nums1, m, nums2, n)
 

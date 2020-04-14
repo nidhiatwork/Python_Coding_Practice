@@ -6,26 +6,24 @@ If you were only permitted to complete at most one transaction (i.e., buy one an
 import sys
 def maxProfit_1(prices):
     n = len(prices)
-    max = 0
+    max_profit = 0
     for i in range(n):
         for j in range(i+1,n):
             diff = prices[j]-prices[i]
-            if diff > max:
-                max = diff
-    return max
+            max_profit = max(diff,max_profit)
+    return max_profit
 '''
 We need to find the largest peak following the smallest valley. We can maintain two variables - minprice and maxprofit corresponding to the smallest valley and maximum profit (maximum difference between selling price and minprice) obtained so far respectively.
 '''
 def maxProfit_2(prices):
     n = len(prices)
-    min,max =sys.maxsize,0
+    min_price,max_profit =sys.maxsize,0
     for i in range(n):
-        if (prices[i] < min):
-            min = prices[i]
-        elif (prices[i] - min) > max:
-            max = prices[i] - min
+        min_price = min(min_price, prices[i])
+        profit = prices[i] - min_price
+        max_profit = max(max_profit, profit)
     
-    return max
+    return max_profit
 
 prices = [3,2,6,5,0,3]
 print(maxProfit_2(prices))

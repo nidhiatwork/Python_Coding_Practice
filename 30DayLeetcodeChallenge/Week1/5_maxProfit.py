@@ -11,5 +11,5 @@ def maxProfit(prices):
 
 
 
-price = [1,3,5,2,1]
+price = [1,3,5,2,10]
 print(maxProfit(price))
