@@ -10,21 +10,21 @@ Example:
 Input: [2,0,2,1,1,0]
 Output: [0,0,1,1,2,2]'''
 
-def sortColors_1(nums):
-    num0 = 0
-    num1 = 0
-    num2 = 0
-    for i in range(len(nums)):
-        if (nums[i] == 0): num0+=1
-        elif (nums[i] == 1): num1+=1
-        elif (nums[i] == 2): num2+=1
+def sortColors_1(arr):
+    num0,num1,num2 = 0,0,0
+    for i in range(len(arr)):
+    	num0+=1 if arr[i]==0 else 0
+    	num1+=1 if arr[i]==1 else 0
+    	num2+=1 if arr[i]==2 else 0
     for i in range(num0):
-        nums[i] = 0
+    	arr[i]=0
     for i in range(num1):
-        nums[num0+i] = 1
+    	arr[num0+i]=1
     for i in range(num2):
-        nums[num0+num1+i] = 2
-    return nums
+    	arr[num0+num1+i]=2
+    return arr
+		
+
 
 
 def sortColors_2(nums):
@@ -43,5 +43,5 @@ def sortColors_2(nums):
         i+=1
     return nums
 
-nums = [2,0,2,1,1,0]
-print(sortColors_2(nums))
+nums = [0,2,1,2,2,1,1,0,2]
+print(sortColors_1(nums))

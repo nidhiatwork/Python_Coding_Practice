@@ -90,4 +90,4 @@ matrix =[
   [1,0,1],
   [1,1,1]
 ]
-print(setZeroes(matrix))
+print(setZeroes_usingThirdValue(matrix))

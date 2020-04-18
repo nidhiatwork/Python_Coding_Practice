@@ -15,17 +15,6 @@ Output: [1,2,3,6,9,8,7,4,5]
 
 def spiralOrder(matrix):
     
-    ans = []
-    #Setting Boundaries for the given matrix
-    m = len(matrix)
-    n = len(matrix[0])
-    
-    t = 0
-    b = m-1
-    l = 0
-    r = n - 1
-    dr = 0
-    
     """ 
     t: top of the matrix
     b: botom of the matrix
@@ -36,6 +25,16 @@ def spiralOrder(matrix):
     n: Number of Columns in the matrix
     
     """
+    ans = []
+    m = len(matrix)
+    n = len(matrix[0])
+    
+    t = 0
+    b = m-1
+    l = 0
+    r = n - 1
+    dr = 0
+    
     
     while (t <= b and l <=r):
         
