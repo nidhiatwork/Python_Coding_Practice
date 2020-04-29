@@ -7,9 +7,8 @@ class Node:
         self.val = val
         self.next = next
 
-def operate(l1):
+def findCycle_usingSet(head):
     nodes = set()
-    head = l1
     while head:
         if head in nodes:
             return True
@@ -17,9 +16,18 @@ def operate(l1):
         head = head.next
     return False
 
-l1 = Node(1,Node(5, Node(7)))
-# l1.next = l1
-result = operate(l1)
+def findCycle_usingTwoPointers(head):
+    slow_p,fast_p=head,head
+    while slow_p and fast_p and fast_p.next:
+        slow_p = slow_p.next
+        fast_p = fast_p.next.next
+        if slow_p == fast_p:
+            return True
+    return False
+
+head = Node(1,Node(5, Node(7)))
+# head.next.next = head
+result = findCycle_usingTwoPointers(head)
 
 print(result)
 # while head:

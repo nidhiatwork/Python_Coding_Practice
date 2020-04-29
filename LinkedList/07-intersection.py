@@ -1,40 +1,66 @@
-# Return an intersecting node if two linked lists intersect.
+"""
+Return an intersecting node if two linked lists intersect.
+"""
 
-import unittest
+class Node:
+    def __init__(self, val, next=None):
+        self.val = val
+        self.next = next
 
-def intersection(head1, head2):
-  nodes = {}
-  node = head1
-  while node:
-    nodes[node] = True
-    node = node.next
-  node = head2
-  while node:
-    if node in nodes:
-      return node
-    node = node.next
-  return None
+def findIntersection_extraSpace(l1,l2):
+    nodes = set()
+    while l1:
+        nodes.add(l1)
+        l1 = l1.next
+    
+    while l2:
+        if l2 in nodes:
+            return l2
+        l2 = l2.next
 
-class Node():
-  def __init__(self, data, next=None):
-    self.data, self.next = data, next
+def findIntersection_constantSpace(l1,l2):
+    orig_l1,orig_l2 = l1,l2
+    count=0
+    while True:
+        count+=1
+        if l1==l2:
+            print(count)
+            return l1
+        l1,l2 = l1.next,l2.next
+        if not l1:
+            l1 = orig_l1
+        if not l2:
+            l2 = orig_l2
 
-  def __str__(self):
-    string = str(self.data)
-    if self.next:
-      string += ',' + str(self.next)
-    return string
+def findIntersection_usingLengthDifference(l1, l2):
+    curA,curB = l1,l2
+    lenA,lenB = 0,0
+    while curA is not None:
+	    lenA += 1
+	    curA = curA.next
+    while curB is not None:
+	    lenB += 1
+	    curB = curB.next
+    curA,curB = l1,l2
+    if lenA > lenB:
+	    for _ in range(lenA-lenB):
+	        curA = curA.next
+    elif lenB > lenA:
+	    for _ in range(lenB-lenA):
+	        curB = curB.next
+    while curB != curA:
+	    curB = curB.next
+	    curA = curA.next
+    return curA
 
-class Test(unittest.TestCase):
-  def test_intersection(self):
-    head1 = Node(10,Node(20,Node(30)))
-    head2 = Node(20,Node(30,Node(40)))
-    self.assertEqual(intersection(head1, head2), None)
-    node = Node(70,Node(80))
-    head3 = Node(50,Node(20,node))
-    head4 = Node(60,Node(90,Node(10,node)))
-    self.assertEqual(intersection(head3, head4), node)
+l1 = Node(1,Node(5))
+n = Node(3, Node(1))
+l1.next.next = n
+l2 = Node(2,Node(5,Node(8)))
+l2.next.next.next = n
+head = findIntersection_constantSpace(l1,l2)
 
-if __name__ == "__main__":
-  unittest.main()
+while head:
+    print(head.val)
+    head = head.next
 

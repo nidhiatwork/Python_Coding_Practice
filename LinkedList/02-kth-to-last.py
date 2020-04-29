@@ -5,10 +5,11 @@ import unittest
 
 def kth_to_last(head, k):
   lead, follow = head, head
-  for _ in range(k):
+  while k:
     if not lead:
       return None
     lead = lead.next
+    k-=1
   while lead:
     lead, follow = lead.next, follow.next
   return follow

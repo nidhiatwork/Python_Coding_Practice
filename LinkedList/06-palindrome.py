@@ -1,11 +1,35 @@
 # Determine whether or not a linked list is a palindrome.
 
 import unittest
+class Node():
+  def __init__(self, val, next=None):
+    self.val, self.next = val, next
 
-def is_palindrome(head):
+  def __str__(self):
+    string = str(self.val)
+    if self.next:
+      string += ',' + str(self.next)
+    return string
+    
+def is_palindrome_1(head):
+    forward_head = head
+    backward_head = None
+    while head:
+        n = Node(head.val)
+        n.next = backward_head
+        backward_head = n
+        head = head.next
+    
+    while forward_head:
+        if forward_head.val!=backward_head.val:
+            return False
+        forward_head, backward_head = forward_head.next, backward_head.next
+    return True
+
+def is_palindrome_2(head):
   forward, backward = head, copy_reverse(head)
   while forward:
-    if forward.data != backward.data:
+    if forward.val != backward.val:
       return False
     forward, backward = forward.next, backward.next
   return True
@@ -22,30 +46,21 @@ def copy_reverse(head):
 
 def copy(node):
   if node:
-    return Node(node.data, node.next)
+    return Node(node.val, node.next)
   else:
     return None
 
-class Node():
-  def __init__(self, data, next=None):
-    self.data, self.next = data, next
-
-  def __str__(self):
-    string = str(self.data)
-    if self.next:
-      string += ',' + str(self.next)
-    return string
 
 class Test(unittest.TestCase):
   def test_palindrome(self):
     list1 = Node(10)
-    self.assertTrue(is_palindrome(list1))
+    self.assertTrue(is_palindrome_1(list1))
     list2 = Node(10,Node(10))
-    self.assertTrue(is_palindrome(list2))
+    self.assertTrue(is_palindrome_1(list2))
     list3 = Node(10,Node(20))
-    self.assertFalse(is_palindrome(list3))
+    self.assertFalse(is_palindrome_1(list3))
     list4 = Node(10,Node(70,Node(30,Node(70,Node(10)))))
-    self.assertTrue(is_palindrome(list4))
+    self.assertTrue(is_palindrome_1(list4))
     
   def test_copy_reverse(self):
     head = Node(10,Node(20,Node(30,Node(40))))

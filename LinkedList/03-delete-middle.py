@@ -2,7 +2,7 @@
 
 import unittest
 
-def delete_middle(node):
+def delete_given_node(node):
   next = node.next
   node.data = next.data
   node.next = next.next
@@ -14,7 +14,7 @@ class Node():
 class Test(unittest.TestCase):
   def test_delete_middle(self):
     head = Node(1,Node(2,Node(3,Node(4, Node(5)))))
-    delete_middle(head.next.next)
+    delete_given_node(head.next.next)
     self.assertEqual(head.data, 1)
     self.assertEqual(head.next.data, 2)
     self.assertEqual(head.next.next.data, 4)

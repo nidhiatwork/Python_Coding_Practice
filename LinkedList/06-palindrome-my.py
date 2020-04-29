@@ -8,18 +8,18 @@ class Node:
         self.next = next
 
 def operate(head):
-    forward = head
-    prev = None
+    forward_head = head
+    prev_head = None
     while head:
         n = Node(head.val)
-        n.next = prev
-        prev = n
+        n.next = prev_head
+        prev_head = n
         head = head.next
     
-    while forward:
-        if forward.val!=prev.val:
+    while forward_head:
+        if forward_head.val!=prev_head.val:
             return False
-        forward, prev = forward.next, prev.next
+        forward_head, prev_head = forward_head.next, prev_head.next
     return True
 
 a = Node(1,Node(2,Node(2, Node(1))))

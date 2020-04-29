@@ -5,15 +5,15 @@
 import unittest
 
 def remove_duplicates(head):
-  node = head
-  if node:
-    values = {node.data: True}
-    while node.next:
-      if node.next.data in values:
-        node.next = node.next.next
-      else:
-        values[node.next.data] = True
-        node = node.next
+  runner = head
+  seen = {runner.data}
+  if runner:
+      while runner.next:
+        if runner.next.data in seen:
+          runner.next = runner.next.next
+        else:
+          seen.add(runner.next.data)
+          runner = runner.next
   return head
 
 class Node():
