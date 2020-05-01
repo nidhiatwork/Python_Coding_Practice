@@ -29,5 +29,5 @@ def canJump(nums):
     return False
 
 # nums = [3,2,1,0,4]
-nums = [2,3,1,1,4]
+nums = [4,3,2,1,0,2]
 print(canJump(nums))
