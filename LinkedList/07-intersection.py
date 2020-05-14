@@ -18,19 +18,12 @@ def findIntersection_extraSpace(l1,l2):
             return l2
         l2 = l2.next
 
-def findIntersection_constantSpace(l1,l2):
-    orig_l1,orig_l2 = l1,l2
-    count=0
-    while True:
-        count+=1
-        if l1==l2:
-            print(count)
-            return l1
-        l1,l2 = l1.next,l2.next
-        if not l1:
-            l1 = orig_l1
-        if not l2:
-            l2 = orig_l2
+def findIntersection_constantSpace(headA,headB):
+    p1, p2 = headA, headB
+    while p1 != p2:
+        p1 = headB if not p1 else p1.next
+        p2 = headA if not p2 else p2.next
+    return p1
 
 def findIntersection_usingLengthDifference(l1, l2):
     curA,curB = l1,l2

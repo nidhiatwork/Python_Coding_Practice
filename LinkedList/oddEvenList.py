@@ -1,4 +1,6 @@
-''''''
+'''
+Link odd position elements together followed by even elements in a linked list.
+'''
 class ListNode:
         def __init__(self, val, next=None):
                 self.val = val

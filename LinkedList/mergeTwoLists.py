@@ -30,12 +30,12 @@ def mergeTwoLists2(l1, l2):
     else:
         l2.next = mergeTwoLists2(l1, l2.next)
         return l2
-        
 
 l1=ListNode(1, ListNode(2, ListNode(4)))
 l2=ListNode(1, ListNode(4, ListNode(5)))
-cur = mergeTwoLists1(l1,l2)
+cur = mergeTwoLists2(l1,l2)
 
 while cur:
     print(cur.val,end='->')
     cur = cur.next
+print('None')

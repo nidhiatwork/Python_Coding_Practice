@@ -16,21 +16,21 @@ class DoublyLinkedList:
 
 	# Function reverse a Doubly Linked List 
 	def reverse(self): 
-		temp = None
+		prev = None
 		current = self.head 
 		
 		# Swap next and prev for all nodes of 
 		# doubly linked list 
 		while current is not None: 
-			temp = current.prev 
+			prev = current.prev 
 			current.prev = current.next
-			current.next = temp 
+			current.next = prev 
 			current = current.prev 
 
 		# Before changing head, check for the cases like 
 		# empty list and list with only one node 
-		if temp is not None: 
-			self.head = temp.prev 
+		if prev is not None: 
+			self.head = prev.prev 
 		
 	# Given a reference to the head of a list and an 
 	# integer,inserts a new node on the front of list 
@@ -59,10 +59,10 @@ class DoublyLinkedList:
 
 # Driver program to test the above functions 
 dll = DoublyLinkedList() 
-dll.push(2); 
-dll.push(4); 
-dll.push(8); 
-dll.push(10); 
+dll.push(2) 
+dll.push(4) 
+dll.push(8) 
+dll.push(10) 
 
 print("\nOriginal Linked List")
 dll.printList(dll.head) 
