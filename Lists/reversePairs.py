@@ -4,7 +4,6 @@ You need to return the number of important reverse pairs in the given array.
 
 Input: [1,3,2,3,1]
 Output: 2
-Example2:
 
 Input: [2,4,3,5,1]
 Output: 3

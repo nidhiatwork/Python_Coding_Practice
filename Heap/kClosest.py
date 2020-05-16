@@ -24,11 +24,10 @@ def kClosest(points, K):
     return [(x,y) for (dist,x, y) in heap]
 
 
-
 def kClosest_1(points, K):
     points.sort(key = lambda x: x[0]**2 + x[1]**2)
     return points[:K]
 
-points = [[3,3],[5,-1],[-2,4]]
+points = [[3,3],[5,-1],[-2,4],[2,3],[1,6],[-2,5]]
 K = 2
-print(kClosest(points, K))
+print(kClosest_1(points, K))

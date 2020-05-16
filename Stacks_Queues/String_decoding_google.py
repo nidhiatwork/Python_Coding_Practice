@@ -12,31 +12,23 @@ def decodestring_easy(mystr):
 		    stack.append(c)
 	    elif c == ']':
 		    temp = ""
-		    while(stack[len(stack)-1]!='['):
+		    while(stack[-1]!='['):
 			    temp = stack.pop() + temp
 		    stack.pop()
 		    stack.append(temp)
 	    elif c == '{':
-		    num = 0
+		    num = ''
 		    i += 1
 		    while i<len(mystr) and mystr[i] != '}':
-			    num = num*10 + int(mystr[i])
+			    num+=mystr[i]
 			    i += 1
 		    pre = stack.pop()
-		    temp = ""
-		    while num!=0:
-		    	temp = temp + pre
-		    	num -= 1
+		    temp = pre*int(num)
 		    stack.append(temp)
-			# print(temp)
 	    else: 
 		    stack.append(c)
 	    i += 1
-    res_str = ""
-    while len(stack)!=0:
-	    res_str = stack.pop() + res_str
-
-    return res_str
+    return ''.join(stack)
 
 def decodestring_withAuthenticity(decoder):
     ans = ''
@@ -82,5 +74,6 @@ def decodestring_withAuthenticity(decoder):
 
 
 s = "def[ab[cd]{2}]{3}ghi"
+# s = "ab[cd]{2}def"
 print(decodestring_easy(s))
-print(decodestring_withAuthenticity(s))
+# print(decodestring_withAuthenticity(s))

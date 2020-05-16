@@ -37,7 +37,6 @@ def majorityElement_1(nums):
     import collections
     import sys
 
-    n = len(nums)//2
     d = collections.Counter(nums)
     max = -sys.maxsize
     for k,v in d.items():

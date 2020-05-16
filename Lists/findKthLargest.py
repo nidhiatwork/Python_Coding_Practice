@@ -60,6 +60,6 @@ def partition(nums, l, r):
     nums[low], nums[r] = nums[r], nums[low]
     return low
 
-nums = [5,2,1,7,7,4,2,4]
+nums = [5,2,1,7,4,2,4]
 k = 2
-print(findKthLargest1(nums,k))
+print(findKthLargest4(nums,k))

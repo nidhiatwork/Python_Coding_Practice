@@ -18,6 +18,7 @@ def getHappyString(n: int, k: int) -> str:
         for nextVal in nextValues[prefix[-1]]:
             postfix = prefix+nextVal
             q.append(postfix)
+        print(q)
     return q[k-1] if k<=len(q) else ''
 
 n,k=3,9

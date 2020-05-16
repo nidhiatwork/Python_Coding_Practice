@@ -21,6 +21,7 @@ def decode_1(s):
             stack[-1][0] += st*k
         else:
             stack[-1][0] += ch
+        print(stack)
     return stack[0][0]
 
 s = "3[a2[c]]"

@@ -16,7 +16,7 @@ class ListNode:
         self.val=val
         self.next=next
 
-def mergeKLists(lists):
+def mergeKLists_priorityQueue(lists):
     head = point = ListNode(0)
     q = PriorityQueue()
     for idx,l in enumerate(lists):
@@ -31,18 +31,39 @@ def mergeKLists(lists):
             q.put((node.val, idx, node))
     return head.next
 
+def mergeSortedLists(lists):
+    if not lists:
+        return
+    if len(lists)==1:
+        return lists[0]
+    mid = len(lists)//2
+    l = mergeSortedLists(lists[:mid])
+    r = mergeSortedLists(lists[mid:])
+    return merge(l,r)
+	
+def merge(l,r):
+	head = runner = ListNode(0)
+	while l and r:
+		if l.val<r.val:
+			runner.next = l
+			l=l.next
+		else:
+			runner.next = r
+			r=r.next
+		runner = runner.next
+	runner.next = l or r
+	return head.next
+
 l1=ListNode(2,ListNode(4,ListNode(5)))
 l2=ListNode(1,ListNode(3,ListNode(4)))
 l3=ListNode(3,ListNode(6))
-merged = mergeKLists([l1,l2,l3])
+merged = mergeKLists_priorityQueue([l1,l2,l3])
 while merged.next:
     print(merged.val, end='->')
     merged = merged.next
 print(merged.val)
 
-
-
-def mergeKLists_easy(lists):
+def mergeKLists_values(lists):
     head = dummy = ListNode(0)
     vals = []
     for l in lists:
