@@ -27,5 +27,5 @@ def repeatedSubstringPattern(s):
     return False
 
 
-s = "aba"
+s = "abaacabaac"
 print(repeatedSubstringPattern(s))

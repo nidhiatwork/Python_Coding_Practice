@@ -38,4 +38,4 @@ matrix = [
   [5,1,2,3],
   [9,5,1,2]
 ]
-print(isToeplitzMatrix_1(matrix))
+print(isToeplitzMatrix_2(matrix))

@@ -28,29 +28,6 @@ def isValid(s):
             
     return len(stack) == 0
 
-def isValid_my(s):
-    if not s:
-        return True
-    
-    d = {'(':')','{':'}','[':']'}
-    stack = []
-    closing_braces = []
-    for i in range(len(s)):
-        if s[i] in d:
-            #opening braces
-            stack.append(s[i])
-            closing_braces.append(d[s[i]])
-        else:
-            # closing braces
-            if not closing_braces or s[i]!=closing_braces[-1]:
-                return False
-            stack.pop()
-            closing_braces.pop()
-    
-    if not stack:
-        return True
-    return False
 
-
-s = "()[]{}"
+s = "([(({}))])[({})]{[]}"
 print(isValid(s))

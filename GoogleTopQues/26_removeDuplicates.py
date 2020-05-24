@@ -17,6 +17,6 @@ def removeDuplicates(nums):
         
     return i + 1
 
-A = [1,1,2,2,3,3]
+A = [1,1,1,1,2,2,3,3]
 print(removeDuplicates(A))
 print(A)

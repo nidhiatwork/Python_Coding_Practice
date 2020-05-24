@@ -30,12 +30,12 @@ def validMountainArray_1(A):
 
 def validMountainArray_2(A):
         i, j, n = 0, len(A) - 1, len(A)
-        while i + 1 < n and A[i] < A[i + 1]: 
+        while i < n - 1 and A[i] < A[i + 1]: 
             i += 1
         while j > 0 and A[j - 1] > A[j]: 
             j -= 1
         return 0 < i and j < n - 1 and i==j
 
 
-A = [0,3,2,1]
+A = [1,2]
 print(validMountainArray_2(A))

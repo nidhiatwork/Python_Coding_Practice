@@ -13,14 +13,14 @@ Output: True
 '''
 
 def checkRecord_1(s):
-    checkA = False
+    firstA = False
     for i,c in enumerate(s):
         if c=='A':
-            if not checkA:
-                checkA = True
+            if not firstA:
+                firstA = True
             else:
                 return False
-        if c=='L' and s[i+1:i+3]=='LL':
+        if s[i:i+3]=='LLL':
             return False
     return True
 

@@ -14,13 +14,12 @@ return [0, 1].
 def twoSum(nums, target):
     if not nums:
         return []
-
-    compls = dict()
-    for i in range(len(nums)):
-        if nums[i] in compls:
-            return [i,compls[nums[i]]]
+    d = dict()
+    for idx,num in enumerate(nums):
+        if num in d:
+            return[d[num],idx]
         else:
-            compls[target-nums[i]] = i
+            d[target-num] = idx
     return []
 
 nums = [7,15,6,2,3,9]

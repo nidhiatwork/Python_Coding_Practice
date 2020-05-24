@@ -20,7 +20,6 @@ def mergeTwoLists1(l1,l2):
     cur.next = l1 or l2
     return dummy.next
 
-#Complex Recursion -- try to understand
 def mergeTwoLists2(l1, l2):
     if not l1 or not l2:
         return l1 or l2

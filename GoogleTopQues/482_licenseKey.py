@@ -27,7 +27,7 @@ def licenseKeyFormatting(S, K):
         i=i+K
     return "-".join(licenseKey)
 
-S = "5F3Z-2e-9-w"
+S = "5F3Z-2e-9-ws"
 K = 4
 print(licenseKeyFormatting(S, K))
 

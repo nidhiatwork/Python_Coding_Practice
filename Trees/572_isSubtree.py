@@ -61,18 +61,16 @@ def isSubtree_3(s,t):
     return tree1.find(tree2)>=0
 
 def preorder(root):
+    def pre(root,l):
+        if root:
+            l.append(str(root.val))
+            pre(root.left,l)
+            pre(root.right,l)
+        else:
+            l.append("None")
     final = []
     pre(root, final)
     return '-'+'-'.join(final)
-
-def pre(root,final):
-    if root:
-        final.append(str(root.val))
-        pre(root.left,final)
-        pre(root.right,final)
-    else:
-        final.append("None")
-
 
 
 s = TreeNode(3, TreeNode(4, TreeNode(1), TreeNode(2)), TreeNode(5))

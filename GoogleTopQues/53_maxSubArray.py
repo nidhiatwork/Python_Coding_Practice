@@ -9,7 +9,6 @@ Explanation: [4,-1,2,1] has the largest sum = 6.
 '''
 
 def maxSubArray_1(nums):
-    
     maximum = nums[0]
     sum = nums[0]
     for i in range(1,len(nums)):
@@ -27,4 +26,4 @@ def maxSubArray_2(nums):
     return max(nums)
     
 nums = [-2,-1,-3,4,-1,2,1,-5,4]
-print(maxSubArray_2(nums))
+print(maxSubArray_1(nums))

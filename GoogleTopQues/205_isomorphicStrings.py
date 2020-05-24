@@ -23,6 +23,6 @@ def isIsomorphic(s,t):
                 return False
     return True
 
-s="egg"
-t="add"
+s="eggtf"
+t="addtd"
 print(isIsomorphic(s,t))

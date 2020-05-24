@@ -17,7 +17,7 @@ d = {'0':'0', '1':'1', '2':'5', '5':'2','6':'9', '8':'8', '9':'6'}
 
 def rotatedDigits(N):
     counts = 0
-    for num in range(1, N+1):
+    for num in range(25, N+1):
         number = str(num)
         if '3' in number or '7' in number or '4' in number: # This will be an invalid number upon rotation
             continue # Skip this number and go to next iteration
@@ -26,4 +26,4 @@ def rotatedDigits(N):
     return counts
 
 
-print(rotatedDigits(2))
+print(rotatedDigits(25))
