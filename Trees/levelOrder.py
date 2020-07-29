@@ -37,9 +37,11 @@ def levelOrder_1(root):
         return ans
 
 def levelOrder_2(root):
-        ret = []
+        if not root:
+                return []
+        traversal = []
         level = [root]
-        while root and level:
+        while level:
                 currentNodes = []
                 nextLevel = []
                 for node in level:
@@ -48,9 +50,9 @@ def levelOrder_2(root):
                                 nextLevel.append(node.left)
                         if node.right:
                                 nextLevel.append(node.right)
-                ret.append(currentNodes)
+                traversal.append(currentNodes)
                 level = nextLevel
-        return ret
+        return traversal
 
 
 root = TreeNode(3, TreeNode(9), TreeNode(20, TreeNode(15), TreeNode(7)))

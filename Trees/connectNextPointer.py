@@ -1,12 +1,12 @@
 '''
 You are given a perfect binary tree where all leaves are on the same level, and every parent has two children. The binary tree has the following definition:
 
-struct Node {
-  int val;
-  Node *left;
-  Node *right;
-  Node *next;
-}
+def __init__(self, val, left=None, right=None, next=None):
+    self.val = val
+    self.left = left
+    self.right = right
+    self.next = next
+    
 Populate each next pointer to point to its next right node. If there is no next right node, the next pointer should be set to NULL.
 '''
 
@@ -22,7 +22,9 @@ def connect(root):
         return None
     level = [root]
     while level:
-        nodes = [node for node in level]            
+        nodes = []
+        for node in level:
+            nodes.append(node)            
         for i in range(len(nodes)-1):
             next = nodes[i+1]
             print("Connecting next from {} to {}".format(nodes[i].val,next.val))

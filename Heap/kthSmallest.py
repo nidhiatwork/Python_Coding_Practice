@@ -1,10 +1,10 @@
 '''Given a n x n matrix where each of the rows and columns are sorted in ascending order, find the kth smallest element in the matrix.
 matrix = [
-[ 1,  5,  9],
-[10, 11, 13],
-[12, 13, 15]],
+[ 1,  3,  9],
+[ 2,  5, 10],
+[ 7,  8, 15]],
 k = 8,
-return 13.
+return 10.
 '''
 import heapq
 
@@ -33,8 +33,9 @@ def kthSmallest_3(matrix, k):
         return ret                 
 
 matrix = [
-   [ 1,  5,  9],
-   [10, 11, 13],
-   [12, 13, 15]
+[ 1,  3,  9],
+[ 2,  5, 10],
+[ 7,  8, 15]
 ]
-print(kthSmallest_1(matrix,8))
+
+print(kthSmallest_3(matrix,8))

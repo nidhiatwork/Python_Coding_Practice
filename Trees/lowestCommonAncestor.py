@@ -1,3 +1,9 @@
+'''
+Let T be a rooted tree. The lowest common ancestor between two nodes n1 and n2 is defined as the lowest node in T that has both n1 and n2 as descendants (where we allow a node to be a descendant of itself).
+
+Given a tree T, and two nodes p,q - find the lowest common ancestor.
+'''
+
 class TreeNode(object):
         def __init__(self, val, left=None, right=None):
             self.val = val
@@ -23,6 +29,11 @@ def lowestCommonAncestor(root,p,q):
             parent[node.right] = node
             stack.append(node.right)
 
+    #Print out everything in parent
+    for k,v in parent.items():
+        if k and v:
+            print(k.val,":",v.val)
+    
     # Ancestors set() for node p.
     ancestors = set()
 

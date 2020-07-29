@@ -17,16 +17,17 @@ class TreeNode:
 
 def inorderTraversal_recursion(root):
     vals = []
-    def doTraversal(root):
-        if root:
-            if root.left:
-                doTraversal(root.left)
-            vals.append(root.val)
-            if root.right:
-                doTraversal(root.right)
-    doTraversal(root)
+    doTraversal(root, vals)
     return vals
 
+def doTraversal(root, vals):
+        if root:
+            if root.left:
+                doTraversal(root.left, vals)
+            vals.append(root.val)
+            if root.right:
+                doTraversal(root.right, vals)
+                
 def inorderTraversal_iteration(root):
     res, stack = [], []
     while True:

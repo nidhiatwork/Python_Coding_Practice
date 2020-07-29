@@ -1,14 +1,16 @@
 # Give the number of ways to climb n steps 1, 2, or 3 steps at a time.
 
+s = dict()
+
 def triple_step(n):
-  counts = [1, 1, 2]
-  if n < 3:
-    return counts[n]
-  i = 2
-  while i < n:
-    i += 1
-    counts[i % 3] = sum(counts)
-  return counts[i % 3]
+  if n<0:
+        return 0
+  if n==0:
+        return 1
+  if n in s:
+        return s[n]
+  s[n] =  triple_step(n-1) + triple_step(n-2) + triple_step(n-3)
+  return s[n]
 
 import unittest
 

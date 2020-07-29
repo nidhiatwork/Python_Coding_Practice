@@ -36,4 +36,4 @@ def canFinish(numCourses, prerequisites):
             return False
     return True
 
-print(canFinish(2, [[1,0],[0,1]]))
+print(canFinish(4, [[1,0],[1,3]]))

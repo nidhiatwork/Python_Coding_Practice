@@ -17,5 +17,9 @@ def shortestPathBinaryMatrix(grid):
                 grid[i][j] = 1
     return -1
 
-a = [[0,0,0],[1,1,0],[1,1,0]]
+a = [
+    [0,0,0],
+    [1,1,0],
+    [1,1,0]
+    ]
 print(shortestPathBinaryMatrix(a))

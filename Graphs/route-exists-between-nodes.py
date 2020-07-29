@@ -7,15 +7,14 @@ from collections import defaultdict
 
 class Graph: 
 
-	def __init__(self,vertices): 
-		self.V= vertices #No. of vertices 
+	def __init__(self): 
 		self.graph = defaultdict(list) # default dictionary to store graph 
 
 	def addEdge(self,u,v): 
 		self.graph[u].append(v) 
 	
 	def isReachable(self, s, d): 
-		visited =[False]*(self.V)
+		visited =[False]*len(self.graph)
 		queue=[]
 		queue.append(s)
 		visited[s] = True
@@ -30,7 +29,7 @@ class Graph:
 					visited[i] = True
 		return False
 
-g = Graph(4) 
+g = Graph() 
 g.addEdge(0, 1) 
 g.addEdge(0, 2) 
 g.addEdge(1, 2) 

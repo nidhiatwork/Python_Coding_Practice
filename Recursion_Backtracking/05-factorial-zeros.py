@@ -9,14 +9,5 @@ def factorial_zeros(n):
 
 import unittest
 
-class Test(unittest.TestCase):
-  def test_factorial_zeros(self):
-    self.assertEqual(factorial_zeros(4), 0)
-    self.assertEqual(factorial_zeros(9), 1)
-    self.assertEqual(factorial_zeros(10), 2)
-    self.assertEqual(factorial_zeros(25), 6)
-    self.assertEqual(factorial_zeros(55), 13)
-
-if __name__ == "__main__":
-  unittest.main()
+print(factorial_zeros(7))
 
