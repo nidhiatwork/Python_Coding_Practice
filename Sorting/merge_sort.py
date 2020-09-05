@@ -3,6 +3,8 @@ def mergeSort(arr):
         mid = len(arr)//2 #Finding the mid of the array 
         L = arr[:mid] # Dividing the array elements  
         R = arr[mid:] # into 2 halves
+        print("L: ",L)
+        print("R: ",R)
         mergeSort(L)
         mergeSort(R) # Sorting the second half
         i = j = k = 0
@@ -22,6 +24,7 @@ def mergeSort(arr):
             arr[k] = R[j]
             j+=1
             k+=1
+    print("Returning arr = ",arr)
     return arr
 
 print(mergeSort([5,1,7,9,0,3,4]))
