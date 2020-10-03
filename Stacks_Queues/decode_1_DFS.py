@@ -17,8 +17,8 @@ def decode_1(s):
             stack.append(["", int(num)])
             num = ""
         elif ch == ']':
-            st, k = stack.pop()
-            stack[-1][0] += st*k
+            c, n = stack.pop()
+            stack[-1][0] += c*n
         else:
             stack[-1][0] += ch
         print(stack)
