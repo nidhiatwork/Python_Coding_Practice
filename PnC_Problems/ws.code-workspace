@@ -2,6 +2,9 @@
 	"folders": [
 		{
 			"path": ".."
+		},
+		{
+			"path": "../../TC_Automate_Project/autotest"
 		}
 	],
 	"settings": {

@@ -1,9 +1,3 @@
-'''
-Given an integer k, for every consecutive sequence of k days (calories[i], calories[i+1], ..., calories[i+k-1] for all 0 <= i <= n-k), they look at T, the total calories consumed during that sequence of k days (calories[i] + calories[i+1] + ... + calories[i+k-1]):
-
-If T < lower, they performed poorly on their diet and lose 1 point; 
-If T > upper, they performed well on their diet and gain 1 point;'''
-
 
 def do(S,K):
     ws=0
