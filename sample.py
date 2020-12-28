@@ -1,6 +1,4 @@
 
-def func(s):
-    pass
-
-s = ""
-print(func(s))
+import sys
+userInput = sys.stdin.readlines()
+print(userInput)
