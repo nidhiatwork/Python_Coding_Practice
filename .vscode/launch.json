@@ -4,12 +4,12 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
-        {
-            "type": "java",
-            "name": "CodeLens (Launch) - haha",
-            "request": "launch",
-            "mainClass": "haha"
-        },
+        // {
+        //     "type": "java",
+        //     "name": "CodeLens (Launch) - haha",
+        //     "request": "launch",
+        //     "mainClass": "haha"
+        // },
         {
             "name": "Python: Current File (Integrated Terminal)",
             "type": "python",
