@@ -16,7 +16,11 @@ def hasCycle(head):
 		if slow==fast:
 			return True
 	return False
+<<<<<<< HEAD
 	
+=======
+
+>>>>>>> 88bf0bda88764f957d7d0656826c2ad9033373ba
 
 head = ListNode(1, ListNode(2, ListNode(3, ListNode(4, ListNode(5, ListNode(6))))))
 head.next.next.next.next.next.next = head.next.next

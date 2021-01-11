@@ -13,8 +13,12 @@ def do():
     filename = filename[:filename.index('(')]
     print("Enter problem description:")
     problem =sys.stdin.readlines()
+<<<<<<< HEAD
     save_path = '/Users/nbhushan/OneDrive - Adobe/Nidhi Folder/Study/Python/MyPythonWS/GrokkingCodingInterview'
 
+=======
+    save_path = '/Users/nbhushan/OneDrive - Adobe/Nidhi Folder/N - Personal/Study/Python/MyPythonWS/GrokkingCodingInterview'
+>>>>>>> 88bf0bda88764f957d7d0656826c2ad9033373ba
     filepath = os.path.join(save_path, filename+'.py')
     f = open(filepath, "a")
     print(filepath)
@@ -27,6 +31,7 @@ def do():
         f.write("\tdef __init__(self, val, next=None):\n")
         f.write("\t\tself.val = val\n")
         f.write("\t\tself.next = next\n\n")
+<<<<<<< HEAD
         f.write("\tdef printList(self):\n")
         f.write("\t\twhile self:\n")
         f.write("\t\t\tprint(self.val, end='->')\n")
@@ -40,5 +45,10 @@ def do():
         f.write(signature+":\n    pass\n\n")
         f.write("\nprint("+signature[4:len(signature)]+")")
         f.close()
+=======
+    f.write(signature+":\n    pass\n\n")
+    f.write("\nprint("+signature[4:len(signature)]+")")
+    f.close()
+>>>>>>> 88bf0bda88764f957d7d0656826c2ad9033373ba
 
 do()
