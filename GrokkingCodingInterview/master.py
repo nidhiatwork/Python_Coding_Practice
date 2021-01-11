@@ -14,6 +14,7 @@ def do():
     print("Enter problem description:")
     problem =sys.stdin.readlines()
     save_path = '/Users/nbhushan/OneDrive - Adobe/Nidhi Folder/Study/Python/MyPythonWS/GrokkingCodingInterview'
+
     filepath = os.path.join(save_path, filename+'.py')
     f = open(filepath, "a")
     print(filepath)
@@ -39,4 +40,5 @@ def do():
         f.write(signature+":\n    pass\n\n")
         f.write("\nprint("+signature[4:len(signature)]+")")
         f.close()
+
 do()
