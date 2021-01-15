@@ -1,15 +1,7 @@
-'''Given the head of a Singly LinkedList, write a function to determine if the LinkedList has a cycle in it or not.
-'''
+import os.path
+import sys
 
-from collections import Counter
-
-class ListNode(object):
-	def __init__(self, val, next=None):
-		self.val = val
-		self.next = next
-
-def has(head):
-    pass
-
-head = ListNode(3)
-print(has(head))
+save_path = '/Users/nbhushan/Desktop'
+filepath = os.path.join(save_path, 'a.py')
+with open(filepath, "a") as f:
+	lines = f.readlines()
