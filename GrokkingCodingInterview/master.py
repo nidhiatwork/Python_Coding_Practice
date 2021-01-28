@@ -18,9 +18,9 @@ def do():
     filepath = os.path.join(save_path, filename+'.py')
     f = open(filepath, "a")
     print(filepath)
-    f.write("'''")
-    f.write(''.join(problem))
-    f.write("'''\n\n")
+    f.write("'''\n")
+    f.write(''.join(problem).strip())
+    f.write("\n'''\n\n")
     f.write("from collections import Counter\n")
     if "head" in signature or "node" in signature:
         f.write("\nclass ListNode(object):\n")
@@ -34,7 +34,7 @@ def do():
         f.write("\t\tprint('None')\n\n")
         f.write(signature+":\n    pass\n\n")
         f.write("head = ListNode(1, ListNode(2, ListNode(3, ListNode(4, ListNode(5, ListNode(6))))))")
-        f.write("\n"+signature[4:len(signature)])
+        f.write("\nhead = "+signature[4:len(signature)])
         f.write("\nhead.printList()")
     else:
         f.write(signature+":\n    pass\n\n")
