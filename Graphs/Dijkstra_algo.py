@@ -17,9 +17,7 @@ class Node(object):
         self.minDistance = sys.maxsize
 
     def __lt__(self, other):
-        selfPriority = self.minDistance
-        otherPriority = other.minDistance
-        return selfPriority < otherPriority
+        return self.minDistance < other.minDistance
 
 class Algorithm(object):
 

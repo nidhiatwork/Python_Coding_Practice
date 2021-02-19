@@ -25,7 +25,7 @@ def partition_midElement(nums,low,high):
 
 def quick_sort(nums,low,high): 
     if low < high: 
-        pivot_index = partition_midElement(nums,low,high)
+        pivot_index = partition_lastElement(nums,low,high)
         print("pivot: ",nums[pivot_index])
         quick_sort(nums, low, pivot_index-1) 
         quick_sort(nums, pivot_index+1, high) 

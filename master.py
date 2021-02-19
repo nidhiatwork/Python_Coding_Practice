@@ -13,7 +13,7 @@ def do():
     filename = filename[:filename.index('(')]
     print("Enter problem description:")
     problem =sys.stdin.readlines()
-    save_path = '/Users/nbhushan/OneDrive - Adobe/Nidhi Folder/Study/Python/MyPythonWS/GrokkingCodingInterview'
+    save_path = '/Users/nbhushan/OneDrive - Adobe/Nidhi Folder/Study/Python/MyPythonWS/GrokkingDynamicProgramming'
 
     filepath = os.path.join(save_path, filename+'.py')
     f = open(filepath, "a")
@@ -21,7 +21,7 @@ def do():
     f.write("'''\n")
     f.write(''.join(problem).strip())
     f.write("\n'''\n\n")
-    f.write("from collections import Counter\n")
+    # f.write("from collections import Counter\n")
     if "root" in signature or "tree" in signature:
         f.write("\nclass TreeNode(object):\n")
         f.write("\tdef __init__(self, val, left=None, right=None):\n")
@@ -29,7 +29,8 @@ def do():
         f.write("\t\tself.left = left\n")
         f.write("\t\tself.right = right\n\n")
         f.write(signature+":\n    return\n\n")
-        f.write("root = TreeNode(1, TreeNode(2, TreeNode(4, TreeNode(8), TreeNode(9)), TreeNode(5, TreeNode(10), TreeNode(11))), TreeNode(3, TreeNode(6, TreeNode(12), TreeNode(13)), TreeNode(7, TreeNode(14), TreeNode(15))))")
+        f.write("root = TreeNode(1, TreeNode(2, TreeNode(4), TreeNode(5)), TreeNode(3, TreeNode(6, TreeNode(7))))")
+        f.write("\n#root = TreeNode(1, TreeNode(2, TreeNode(4, TreeNode(8), TreeNode(9)), TreeNode(5, TreeNode(10), TreeNode(11))), TreeNode(3, TreeNode(6, TreeNode(12), TreeNode(13)), TreeNode(7, TreeNode(14), TreeNode(15))))")
         f.write("\nroot = "+signature[4:len(signature)])
     elif "head" in signature or "node" in signature:
         f.write("\nclass ListNode(object):\n")

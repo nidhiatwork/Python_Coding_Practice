@@ -1,15 +1,14 @@
-'''Given the head of a Singly LinkedList, write a function to determine if the LinkedList has a cycle in it or not.
-'''
+[True, False, False, False, False, False, False, False, False, False], 
+[True, False, False, True, False, False, False, False, False, False], 
+[True, False, False, True, False, False, False, False, False, False], 
+[True, False, False, True, False, False, False, False, False, False], 
+[True, False, False, True, True, False, False, False, False, False], 
+[True, False, False, True, True, True, False, False, False, False]]
 
-from collections import Counter
 
-class ListNode(object):
-	def __init__(self, val, next=None):
-		self.val = val
-		self.next = next
-
-def has(head):
-    pass
-
-head = ListNode(3)
-print(has(head))
+[[True, False, False, False, False, False, False, False, False, False], 
+[True, False, False, True, False, False, False, False, False, False], 
+[True, False, False, True, False, False, True, False, False, False], 
+[True, False, False, True, False, False, True, False, False, True], 
+[True, False, False, True, True, False, True, True, False, True], 
+[True, False, False, True, True, True, True, True, True, True]]

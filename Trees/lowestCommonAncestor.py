@@ -47,5 +47,5 @@ def lowestCommonAncestor(root,p,q):
     while q not in ancestors:
         q = parent[q]
     return q
-root = TreeNode(3, TreeNode(5, TreeNode(6), TreeNode(2, TreeNode(7), TreeNode(4))), TreeNode(1, TreeNode(0), TreeNode(8)))
-print(lowestCommonAncestor(root,root.left,root.left.right.right).val)
+root = TreeNode(1, TreeNode(2, TreeNode(4), TreeNode(5)), TreeNode(3, TreeNode(6), TreeNode(7)))
+print(lowestCommonAncestor(root,root.left.left,root.left.right).val)

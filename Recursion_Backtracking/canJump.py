@@ -12,6 +12,15 @@ Output: true
 Explanation: Jump 1 step from index 0 to 1, then 3 steps to the last index.
 '''
 #To do
+
+def canJump(nums):
+    m = 0
+    for i, n in enumerate(nums):
+        if i > m:
+            return False
+        m = max(m, i+n)
+    return True
+
 def canJump_GreedyApproach(nums):
     lastPos = len(nums) - 1
     for i in range(len(nums)-1,-1,-1):
@@ -33,4 +42,4 @@ def canJumpFromPosition(position, nums) :
         return False
 
 nums = [2,3,1,1,4]
-print(canJump_Backtracking(nums))
+print(canJump(nums))
