@@ -1,25 +1,20 @@
 class Singleton:
-    __instance = None
+    _instance = None
     
-    def __init__(self):
-        if Singleton.__instance:
-            raise Exception("This is Singleton!")
-        else:
-            Singleton.__instance = self
-    
-    @staticmethod
-    def getInstance():
-        if not Singleton.__instance:
-            Singleton()
-        return Singleton.__instance
+    def __new__(self):
+        if not self._instance:
+            self._instance = super(Singleton, self).__new__(self)
+            self.y = 10
+        return self._instance
     
 
 # Hence all below lines return same object only
 s = Singleton()
 print(s)
+print(s.y)
 
-s = Singleton.getInstance()
+s = Singleton()
 print(s)
 
-s = Singleton.getInstance()
+s = Singleton()
 print(s)

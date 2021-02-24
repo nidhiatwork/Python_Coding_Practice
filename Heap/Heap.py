@@ -1,71 +1,94 @@
-class Heap(object):
-
-    HEAP_SIZE = 10
-
+"""
+Min Heap Implementation in Python
+"""
+class MinHeap:
     def __init__(self):
-        self.heap = [0]* Heap.HEAP_SIZE
-        self.currentPosition = -1
-
-    def insert(self, item):
-        if self.isFull():
-            print("Heap is full")
-            return
-        self.currentPosition +=1
-        self.heap[self.currentPosition] = item
-        self.fixUp(self.currentPosition)
-
-    def fixUp(self, index):
-        parentIndex = (index-1)//2
-
-        while parentIndex>=0 and self.heap[index]> self.heap[parentIndex]:
-            self.heap[index],self.heap[parentIndex] = self.heap[parentIndex],self.heap[index]
-            index = parentIndex
-            parentIndex = (index-1)//2
-
-    def heapSort(self):
-        for i in range(0,self.currentPosition+1):
-            print(self.heap[0])
-            
-            self.heap[0],self.heap[self.currentPosition-i]=self.heap[self.currentPosition-i],self.heap[0]
-            self.fixDown(0, self.currentPosition-i-1)
-
-    def fixDown(self, index, upto):
-        while index<=upto:
-            leftChild = 2*index+1
-            rightChild = 2*index+2
-            if leftChild < upto:
-                childToSwap = None
-                
-                if rightChild > upto:
-                    childToSwap = leftChild
-                else:
-                    if self.heap[leftChild] > self.heap[rightChild]:
-                        childToSwap = leftChild
-                    else:
-                        childToSwap = rightChild
-                
-                if self.heap[index]<self.heap[childToSwap]:
-                    self.heap[index],self.heap[childToSwap] = self.heap[childToSwap],self.heap[index]
-                else:
-                    break
-                index = childToSwap
+        self.heap_list = [0]
+        self.current_size = 0
+ 
+    def shift_up(self, i):
+        """
+        Moves the value up in the tree to maintain the heap property.
+        """
+        # While the element is not the root or the left element
+        while i // 2 > 0:
+            # If the element is less than its parent swap the elements
+            if self.heap_list[i] < self.heap_list[i // 2]:
+                self.heap_list[i], self.heap_list[i // 2] = self.heap_list[i // 2], self.heap_list[i]
+            # Move the index to the parent to keep the properties
+            i = i // 2
+ 
+    def insert(self, k):
+        """
+        Inserts a value into the heap
+        """
+        # Append the element to the heap
+        self.heap_list.append(k)
+        # Increase the size of the heap.
+        self.current_size += 1
+        # Move the element to its position from bottom to the top
+        self.shift_up(self.current_size)
+ 
+    def shift_down(self, i):
+        # if the current node has at least one child
+        while (i * 2) <= self.current_size:
+            # Get the index of the min child of the current node
+            mc = self.min_child(i)
+            # Swap the values of the current element is greater than its min child
+            if self.heap_list[i] > self.heap_list[mc]:
+                self.heap_list[i], self.heap_list[mc] = self.heap_list[mc], self.heap_list[i]
+            i = mc
+ 
+    def min_child(self, i):
+        # If the current node has only one child, return the index of the unique child
+        if (i * 2)+1 > self.current_size:
+            return i * 2
+        else:
+            # Herein the current node has two children
+            # Return the index of the min child according to their values
+            if self.heap_list[i*2] < self.heap_list[(i*2)+1]:
+                return i * 2
             else:
-                break
+                return (i * 2) + 1
+ 
+    def delete_min(self):
+        # Equal to 1 since the heap list was initialized with a value
+        if len(self.heap_list) == 1:
+            return 'Empty heap'
+ 
+        # Get root of the heap (The min value of the heap)
+        root = self.heap_list[1]
+ 
+        # Move the last value of the heap to the root
+        self.heap_list[1] = self.heap_list[self.current_size]
+ 
+        # Pop the last value since a copy was set on the root
+        self.heap_list.pop()
+ 
+        # Decrease the size of the heap
+        self.current_size -= 1
+ 
+        # Move down the root (value at index 1) to keep the heap property
+        self.shift_down(1)
+ 
+        # Return the min value of the heap
+        return root
+"""
+Driver program
+"""
+# Same tree as above example.
+my_heap = MinHeap()
+my_heap.insert(5)
+my_heap.insert(6)
+my_heap.insert(3)
+my_heap.insert(7)
+my_heap.insert(9)
+my_heap.insert(2)
+my_heap.insert(13)
+my_heap.insert(11)
+my_heap.insert(1)
+my_heap.insert(10)
 
-    def isFull(self):
-        return self.currentPosition==Heap.HEAP_SIZE
+print(my_heap.delete_min()) # removing min node i.e 5 
 
-h = Heap()
-h.insert(24)
-h.insert(12)
-h.insert(10)
-h.insert(2)
-h.insert(1)
-h.insert(9)
-h.insert(8)
-# h.insert(10)
-# h.insert(-20)
-# h.insert(0)
-# h.insert(2)
-print(h.heap)
-h.heapSort()
+ 

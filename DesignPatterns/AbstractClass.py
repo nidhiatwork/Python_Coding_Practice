@@ -15,16 +15,5 @@ class BigChair(Chair):
     def get_dimensions(self):
         return self.height, self.width, self.length
 
-class ChairFactory():
-    @staticmethod
-    def getChair(type):
-        try:
-            if type=="Big":
-                return BigChair()
-            raise AssertionError("Not valid type")
-        except AssertionError as e:
-            print(e)
-
-f = ChairFactory.getChair("Big")
-print(f.get_dimensions())
-
+c = BigChair()
+print(c.get_dimensions())
