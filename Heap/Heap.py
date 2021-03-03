@@ -6,7 +6,7 @@ class MinHeap:
         self.heap_list = [0]
         self.current_size = 0
  
-    def shift_up(self, i):
+    def fix_up(self, i):
         """
         Moves the value up in the tree to maintain the heap property.
         """
@@ -27,9 +27,9 @@ class MinHeap:
         # Increase the size of the heap.
         self.current_size += 1
         # Move the element to its position from bottom to the top
-        self.shift_up(self.current_size)
+        self.fix_up(self.current_size)
  
-    def shift_down(self, i):
+    def fix_down(self, i):
         # if the current node has at least one child
         while (i * 2) <= self.current_size:
             # Get the index of the min child of the current node
@@ -69,7 +69,7 @@ class MinHeap:
         self.current_size -= 1
  
         # Move down the root (value at index 1) to keep the heap property
-        self.shift_down(1)
+        self.fix_down(1)
  
         # Return the min value of the heap
         return root

@@ -28,7 +28,7 @@ def swap_nodes_by_value(head):
         # Move temo by 2 fro the next pair 
         temp = temp.next.next
 
-def swap_nodes_by_links(head):
+def swap_nodes_recursive(head):
     if not head or not head.next:
         return head 
   
@@ -38,12 +38,36 @@ def swap_nodes_by_links(head):
   
     head.next.next = head 
   
-    head.next = swap_nodes_by_links(remaing) 
+    head.next = swap_nodes_recursive(remaing) 
   
     return newhead
 
+def swap_nodes_iterative(head):
+    if head is None or head.next is None:
+        return head
+ 
+    curr = head
+    prev = None
+ 
+
+    while curr and curr.next:
+ 
+        temp = curr.next
+        curr.next = temp.next
+        temp.next = curr
+ 
+        if prev is None:
+            head = temp
+        else:
+            prev.next = temp
+ 
+        prev = curr
+        curr = curr.next
+ 
+    return head
+
 n = ListNode(1, ListNode(2, ListNode(3, ListNode(4, ListNode(5, ListNode(6))))))
-h = swap_nodes_by_links(n)
+h = swap_nodes_iterative(n)
 while h:
     print(h.val)
     h=h.next

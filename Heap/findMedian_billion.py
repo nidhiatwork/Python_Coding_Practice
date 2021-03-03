@@ -18,3 +18,17 @@ class MedianFinder:
         else:
             return float(self.large[0])
 
+m = MedianFinder()
+m.addNum(5)
+m.addNum(2)
+m.addNum(3)
+m.addNum(7)
+m.addNum(12)
+m.addNum(6)
+m.addNum(13)
+m.addNum(9)
+m.addNum(10)
+m.addNum(3)
+m.addNum(6)
+m.addNum(3)
+m.addNum(10)

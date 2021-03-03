@@ -10,6 +10,7 @@ class Dict(object):
         while self.keys[index]:
             if self.keys[index]==key:
                 self.values[index] = value
+                return
             index = (index+1)%self.size
         self.keys[index] = key
         self.values[index] = value
@@ -32,6 +33,7 @@ class Dict(object):
 d = Dict()
 d.put(2,5)
 d.put(3,15)
+d.put(2,1)
 d.put(4,8)
 d.put(1,6)
 print(d.get(4))

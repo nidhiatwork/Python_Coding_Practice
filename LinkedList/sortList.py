@@ -26,7 +26,23 @@ def sortList(head):
     slow.next = None
     h1 = sortList(head)
     h2 = sortList(second)
-    return merge(h1, h2)
+    return merge1(h1, h2)
+
+
+def merge1(h1, h2):
+    dummy = ListNode(0)
+    runner = dummy
+    while h1 and h2:
+        if h1.val < h2.val:
+            dummy.next = h1
+            h1 = h1.next
+        else:
+            dummy.next = h2
+            h2 = h2.next
+        dummy = dummy.next
+    dummy.next = h1 or h2
+    return runner.next
+
 
 def merge(h1, h2):
     if not h1 or not h2:
