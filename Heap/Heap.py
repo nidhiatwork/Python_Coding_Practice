@@ -5,7 +5,11 @@ class MinHeap:
     def __init__(self):
         self.heap_list = [0]
         self.current_size = 0
- 
+    
+    def heapify(self, vals):
+        for val in vals:
+            self.insert(val)
+
     def fix_up(self, i):
         """
         Moves the value up in the tree to maintain the heap property.
@@ -88,7 +92,10 @@ my_heap.insert(13)
 my_heap.insert(11)
 my_heap.insert(1)
 my_heap.insert(10)
-
+vals = [2,7,4,1,8,1]
+new_heap = MinHeap()
+new_heap.heapify(vals)
+print(new_heap.heap_list)
 print(my_heap.delete_min()) # removing min node i.e 5 
 
  

@@ -23,25 +23,22 @@ def sortColors_1(arr):
     for i in range(num2):
     	arr[num0+num1+i]=2
     return arr
-		
+	
 
-
-
-def sortColors_2(nums):
-    j = 0
-    k = len(nums) - 1
+def sortColors(arr):
+    low, high = 0, len(arr)-1
     i=0
-    while i<=k:
-        if nums[i] == 0 and i != j:
-            nums[i],nums[j] = nums[j],nums[i]
-            i-=1
-            j+=1
-        elif nums[i] == 2 and i != k:
-            nums[i],nums[k] = nums[k],nums[i]
-            i-=1
-            k-=1
-        i+=1
-    return nums
-
+    while i <= high:
+        if arr[i] == 0:
+            arr[i],arr[low]=arr[low],arr[i]
+            i += 1
+            low += 1
+        elif arr[i] == 1:
+            i += 1
+        else:
+            arr[i], arr[high] = arr[high], arr[i]
+            high -= 1
+    return arr
 nums = [0,2,1,2,2,1,1,0,2]
+
 print(sortColors_1(nums))
