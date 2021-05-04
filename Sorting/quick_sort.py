@@ -1,10 +1,9 @@
 
   
 def partition_lastElement(nums,low,high): 
-    pivot = high
     i = low
     for j in range(low,high):
-        if nums[j]<=nums[pivot]:
+        if nums[j]<=nums[high]:
             nums[i],nums[j] = nums[j], nums[i]
             i+=1
     nums[i],nums[high]=nums[high],nums[i]

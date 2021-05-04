@@ -1,5 +1,5 @@
 '''
-Given an array of unsorted numbers and a target number, find a triplet in the array whose diff is as close to the target number as possible, return the diff of the triplet. If there are more than one such triplet, return the diff of the triplet with the smallest diff.
+Given an array of unsorted numbers and a target number, find a triplet in the array whose sum is as close to the target number as possible, return the diff of the triplet. If there are more than one such triplet, return the diff of the triplet with the smallest sum.
 Input: [-2, 0, 1, 2], target=2
 Output: 1'''
 
