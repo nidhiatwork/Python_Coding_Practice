@@ -54,10 +54,15 @@ def merge(l,r):
 	runner.next = l or r
 	return head.next
 
+def mergeSortedLists_recursion(list, i=0):
+    if len(list)-1==i: 
+        return merge(list[i], None)
+    return merge(list[i], mergeSortedLists_recursion(list, i+1))
+
 l1=ListNode(2,ListNode(4,ListNode(5)))
 l2=ListNode(1,ListNode(3,ListNode(4)))
 l3=ListNode(3,ListNode(6))
-merged = mergeKLists_priorityQueue([l1,l2,l3])
+merged = mergeSortedLists_recursion([l1,l2,l3])
 while merged.next:
     print(merged.val, end='->')
     merged = merged.next
