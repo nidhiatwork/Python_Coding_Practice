@@ -1,7 +1,10 @@
 {
 	"folders": [
 		{
-			"path": "../../../../../Desktop/vue_crash_todolist"
+			"path": "."
+		},
+		{
+			"path": "../../../../../Desktop/ACP"
 		}
 	]
 }

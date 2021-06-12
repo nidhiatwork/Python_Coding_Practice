@@ -27,8 +27,22 @@ def knapSack_dp(W, wt, val, n):
                 dp[item][w] = dp[item-1][w]
 
     return dp[n][W]
+
+def knapsack(wt, val, W, i=1):
+    if i > len(wt) or W<=0:
+        return 0
+    if t[i][W] ==-1:
+        if wt[i-1] <= W:
+            t[i][W] = max(val[i-1] + knapsack(wt, val, W-wt[i-1], i+1), knapsack(wt, val, W, i+1))
+        elif wt[i-1] > W:
+            t[i][W] = knapsack(wt, val, W, i+1)
+    return t[i][W]
+
 val = [60, 100, 120]
 wt = [10, 20, 30]
 W = 50
 n = len(val)
+t = [[-1 for i in range(W + 1)] for j in range(n + 1)] 
+print(knapsack(wt, val, W))
 print(knapSack_dp(W, wt, val, n))
+print(knapSack(W, wt, val, n))

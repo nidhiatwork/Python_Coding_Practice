@@ -81,54 +81,53 @@ class Map:
  [12, 16, 22, 29],
  [23, 29, 32],
  [2, 4, 7, 22, 28, 36]]
-import heapq
-class Node:
-    def __init__(self, node, dist):
-        self.node = node
-        self.heuristic = math.inf
-        self.dist = dist
-        self.predecessor = None
+import math
+from queue import PriorityQueue
 
-    def __lt__(self, other):
-        self.heauristic<other.heauristic
+
+#I used the idea in here https://dbader.org/blog/priority-queues-in-python
+
+def shortest_path(graph, start, goal):
     
-    def __repr__(self):
-        return str(self.node)+','+str(self.heauristic)+','+str(self.dist)
-
-def shortest_path(given_map, start, end):
-    visited = set()
-    records = dict()
-    heap=[Node(start,0)]
-    heapq.heapify(heap)
-    while heap:
-        item = heapq.heappop(heap)
-        if item.node==end:
-            break
-        for n in given_map.roads[item.node]:
-            if n not in visited:
-                dist = item.dist+distance(given_map, item.node, n)
-                if n in records and records[n].dist<dist:
-                        continue
-                to_add = Node(n, dist)
-                to_add.heauristic = dist+distance(given_map, n, end)
-                to_add.predecessor = item
-                records[n] = to_add
-                heapq.heappush(heap, to_add) 
-        visited.add(item.node)
-    ans = []    
-    while True:
-        ans.append(item.node)
-        if item.node==start:
-            break
-        item = item.predecessor
-    return ans[::-1]
+    pathQueue = PriorityQueue()
+    pathQueue.put(start, 0)
     
+    prev = {start: None}
+    score = {start: 0}
 
-def distance(given_map, node1, node2):
-    x1,y1 = given_map.intersections[node1]
-    x2,y2 = given_map.intersections[node2]
-    d = ((y2-y1)**2 + (x2-x1)**2)
-    return math.sqrt(d)
+    while not pathQueue.empty():
+        curr = pathQueue.get()
+        # print("popping", curr)
+        if curr == goal:
+            generatePath(prev, start, goal)
+
+        for node in graph.roads[curr]:
+            updateScore = score[curr] + heuristicMeasure(graph.intersections[curr], graph.intersections[node])
+            
+            if node not in score or updateScore < score[node]:
+                score[node] = updateScore
+                # if updateScore!=heuristicMeasure(graph.intersections[curr], graph.intersections[node]):
+                #     print("NOT SAME!")
+                totalScore = updateScore + heuristicMeasure(graph.intersections[curr], graph.intersections[node])
+                pathQueue.put(node, totalScore)
+                # print("putting: ",node)
+                prev[node] = curr
+
+    return generatePath(prev, start, goal)
+
+
+#returning distance from start to goal
+def heuristicMeasure(start, goal):
+    return math.sqrt(((start[0] - goal[0]) ** 2) + ((start[1] - goal[1]) ** 2))
+
+def generatePath(prev, start, goal):
+    curr = goal
+    path = [curr]
+    while curr != start:
+        curr = prev[curr]
+        path.append(curr)
+    path.reverse()
+    return path
 
 given_map = Map()
 print(shortest_path(given_map, 8, 24))
