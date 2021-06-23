@@ -7,6 +7,7 @@ class Node:
 		self.data = data
 		self.left = None
 		self.right = None
+		self.level = None
 	def __repr__(self):
 		return str(self.data)
 

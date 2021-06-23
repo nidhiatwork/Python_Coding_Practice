@@ -27,5 +27,6 @@ def convert(money):
     if l%2:
         return convert(money[:2]) + " " + bigs[l] + " " + convert(money[2:])
 
-num = "3870000"
-print(convert(num))
+if __name__=='__main__':
+    num = "3870000"
+    print(convert(num))

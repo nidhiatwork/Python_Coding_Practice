@@ -13,14 +13,20 @@ Output:
   []
 ]
 '''
-def subsets(nums):
-    all_subsets = [[]]
-    if not nums:
-        return all_subsets
-    for num in nums:
-        for idx in range(len(all_subsets)):
-            all_subsets.append(all_subsets[idx]+[num])
-    return all_subsets
+class Solution:
+    def subsets(self, nums):
+        ans = []
+        sub = []
+        self.subsets_helper(nums, sub, ans)
+        return ans
     
+    def subsets_helper(self, nums, sub, ans, idx=0):
+        ans.append(list(sub))
+        for i in range(idx, len(nums)):
+            sub.append(nums[i])
+            self.subsets_helper(nums, sub, ans, i+1)
+            sub.pop()
+
 nums = [1,2,3]
-print(subsets(nums))
+s=Solution()
+print(s.subsets(nums))

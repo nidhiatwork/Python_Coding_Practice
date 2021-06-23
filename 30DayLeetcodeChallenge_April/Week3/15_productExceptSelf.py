@@ -6,14 +6,18 @@ Input:  [1,2,3,4]
 Output: [24,12,8,6]
 '''
 def productExceptSelf(nums):
-    A = [None]*len(nums)
-    A[0]=1
-    for i in range(1,len(nums)):
-        A[i]=nums[i-1]*A[i-1]
-    B = [None]*len(nums)
-    B[-1]=1
-    for i in range(len(nums)-2,-1,-1):
-        B[i]=nums[i+1]*B[i+1]
+    p=1
+    A=[]
+    for i in range(len(nums)):
+        A.append(p)
+        p=p*nums[i]
+    p=1
+    B=[]
+    n=len(nums)-1
+    for i in range(len(nums)):
+        B.append(p)
+        p=p*nums[n-i]
+    B.reverse()
     for i in range(len(nums)):
         nums[i]=A[i]*B[i]
     return nums
@@ -30,5 +34,19 @@ def productExceptSelf_constantSpace(nums):
             output[i] = output[i] * p
             p = p * nums[i]
         return output
-nums = [1,2,3,4]
-print(productExceptSelf_constantSpace(nums))
+class Solution:
+    def productExceptSelf(self, nums):
+        ans = [1 for _ in nums]
+        
+        left = 1
+        right = 1
+        
+        for i in range(len(nums)):
+            ans[i] *= left  
+            ans[-1-i] *= right
+            left *= nums[i]
+            right *= nums[-1-i]
+        
+        return ans
+nums = [1,2,3,4,5]
+print(productExceptSelf(nums))
