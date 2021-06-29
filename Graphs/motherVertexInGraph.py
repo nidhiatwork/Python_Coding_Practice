@@ -9,18 +9,25 @@ class Graph:
 	def addEdge(self,u,v):
 		self.graph[u].append(v)
 
-def DFSUtil(g, s, d, visited):
-	if s==d:
-		return True
-	visited[s] = True
-	for n in g.graph[s]:
+def DFSUtil(g, v, visited):
+	visited[v] = True
+	for n in g.graph[v]:
 		if visited[n]==False:
-			if DFSUtil(g, n, d, visited):
-				return True
-	return False
+			DFSUtil(g, n, visited)
 
-
+def findMother(g):
+	ans = 0
+	visited = [False]*g.vertices
+	for v in range(g.vertices):
+		if visited[v]==False:
+			DFSUtil(g, v, visited)
+			ans = v
 	
+	visited = [False]*g.vertices
+	DFSUtil(g, ans, visited)
+	if False in visited:
+		return -1
+	return ans
 
 g = Graph(7)
 g.addEdge(0, 1)
@@ -31,5 +38,4 @@ g.addEdge(6, 4)
 g.addEdge(5, 6)
 g.addEdge(5, 2)
 g.addEdge(6, 0)
-visited = [False]*g.vertices
-print(DFSUtil(g, 5, 3, visited))
+print(findMother(g))

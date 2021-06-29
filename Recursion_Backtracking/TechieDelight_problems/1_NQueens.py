@@ -19,18 +19,16 @@ def isSafe(board, r, c):
 
 def printNQueens(board, r=0):
       if r==N:
-            for i in range(N):
-                for j in range(N):
-                      print(board[i][j],end=' ')
-                print()
-            print()
-            return
-      for i in range(N):
-            if isSafe(board, r, i):
-                  board[r][i] = 'Q'
-                  printNQueens(board, r+1)
-                  board[r][i] = '-'
-
+            return True
+      for c in range(N):
+            if isSafe(board, r, c):
+                  board[r][c] = 'Q'
+                  if printNQueens(board, r+1):
+                        for row in board:
+                              print(row)
+                        print()
+                  board[r][c] = '-'
+      return False
 
 N = 4
 board = [['-' for _ in range(N)] for i in range(N)]
