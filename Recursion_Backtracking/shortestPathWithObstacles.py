@@ -15,16 +15,16 @@ def shortestPath(mat, i,j,m,n):
 	explorePathToEndFrom(mat, i, j, m, n, steps, shortestP)
 	return shortestP[0]
 
-def explorePathToEndFrom(mat, i, j, m, n, steps, longestP):
+def explorePathToEndFrom(mat, i, j, m, n, steps, shortestP):
 	if i==m and j==n:
-		longestP[0] = min(longestP[0], steps)
+		shortestP[0] = min(shortestP[0], steps)
 		return
 	for direction in ([1,0], [0,1], [-1,0], [0,-1]):
 		new_i = i+direction[0]
 		new_j = j+direction[1]
 		if isValid(mat, new_i, new_j):
 			mat[new_i][new_j] = 2
-			explorePathToEndFrom(mat, new_i, new_j, m, n, steps+1, longestP)
+			explorePathToEndFrom(mat, new_i, new_j, m, n, steps+1, shortestP)
 			mat[new_i][new_j] = 1
 
 def isValid(grid, r, c):

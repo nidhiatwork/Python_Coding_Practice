@@ -3,12 +3,8 @@ def shortestPath(mat):
 	min_steps = [float('inf')]
 	for r in range(len(mat)):
 		grid = mat[:]
-		steps = 0
-		if isValid(grid, r, 0) and notAdjacentToMine(grid, r, 0):
-			tmp = grid[r][0]
-			grid[r][0]=2
-			explorePathToEndFrom(grid, r, 0, steps, min_steps)
-			grid[r][0] = tmp
+		steps = -1
+		explorePathToEndFrom(grid, r, -1, steps, min_steps)
 	return min_steps[0]
 
 def explorePathToEndFrom(grid, r, c, steps, min_steps):
