@@ -28,7 +28,7 @@ def reverseLinkedList_recursion(head):
     return p
 
 root = ListNode(1,ListNode(2, ListNode(3, ListNode(4, ListNode(5)))))
-reversed = reverseLinkedList_iteration(root)
+reversed = reverseLinkedList_recursion(root)
 while reversed:
     print(reversed.val, end='->')
     reversed = reversed.next
