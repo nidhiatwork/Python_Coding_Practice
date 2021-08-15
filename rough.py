@@ -1,1 +1,5 @@
-print(4)
+from typing import DefaultDict
+
+
+def minTime(n, headID, manager, informTime):
+    graph = DefaultDict()

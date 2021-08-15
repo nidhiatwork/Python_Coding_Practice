@@ -71,13 +71,11 @@ class Interval:
         print("[",str(self.start),", ",str(self.end),"]")
 
 def employeeFreeTime(avails):
-    OPEN, CLOSE = 0, 1
-
     events = []
     for emp in avails:
         for interval in emp:
-            events.append((interval.start, OPEN))
-            events.append((interval.end, CLOSE))
+            events.append((interval.start, 0))
+            events.append((interval.end, 1))
 
     events.sort()
     ans = []
@@ -86,10 +84,8 @@ def employeeFreeTime(avails):
     for cur, cmd in events:
         if bal == 0 and prev is not None:
             ans.append(Interval(prev, cur))
-
-        bal += 1 if cmd is OPEN else -1
+        bal += 1 if cmd==0 else -1
         prev = cur
-
     return ans
 
 schedule = [[Interval(1,3), Interval(9,12)], [Interval(2,4),Interval(6,8)]]
