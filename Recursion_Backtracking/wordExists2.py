@@ -29,15 +29,17 @@ def exist(board, word):
 def dfs(board, i, j, word, idx=0):
 	if idx==len(word):
 		return True
+	if word[idx]!=board[i][j]:
+		return False
+	tmp = board[i][j]
+	board[i][j] = '#'
 	for direction in ([1,0], [0,1], [-1,0], [0,-1]):
 		new_i = i+direction[0]
 		new_j = j+direction[1]
-		if isValid(board, new_i, new_j) and board[new_i][new_j]==word[idx]:
-			tmp = board[new_i][new_j]
-			board[new_i][new_j] = '#'
+		if isValid(board, new_i, new_j):
 			if dfs(board, new_i, new_j, word, idx+1):
 				return True
-			board[new_i][new_j] = tmp
+	board[i][j] = tmp
 	return False
 
 def isValid(board, i, j):

@@ -76,13 +76,12 @@ class TreeNode:
             tempNode = self.getPredecessor(node.leftChild)
             node.data = tempNode.data
             node.leftChild = self.removeNode(tempNode.data, node.leftChild)
-        
+
         return node
     
     def getPredecessor(self, node):
         if node.rightChild:
             return self.getPredecessor(node.rightChild)
-        
         return node
 
     def traverse(self):
@@ -136,22 +135,18 @@ class TreeNode:
         return node.data
 
 bst = TreeNode()
-bst.insert(12)
-bst.insert(5)
-bst.insert(14)
-bst.insert(3)
-bst.insert(10)
-bst.insert(7)
-bst.insert(16)
-bst.insert(15)
+bst.insert(13)
+bst.insert(19)
+bst.insert(21)
+bst.insert(22)
 bst.insert(6)
-bst.insert(2)
-bst.insert(8)
+bst.insert(4)
 bst.insert(9)
-bst.insert(17)
-bst.insert(14.9)
-bst.insert(15.2)
+bst.insert(7)
+bst.insert(10)
+bst.insert(14)
+bst.insert(11)
 bst.traverse()
-bst.remove(16)
-bst.traverse()
-print(bst.findByVal(7))
+bst.remove(19)
+# bst.traverse()
+# print(bst.findByVal(7))

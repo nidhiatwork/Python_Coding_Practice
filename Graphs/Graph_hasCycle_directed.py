@@ -1,68 +1,43 @@
-'''Given a directed graph, check whether the graph contains a cycle or not.
-'''
 from collections import defaultdict
-class Graph:
-	def __init__(self, vertices):
-		self.vertices = vertices
-		self.graph = defaultdict(list)
 
-	def addEdge(self,u,v):
-		self.graph[u].append(v)
+class Solution(object):
+    def accountsMerge(self, accounts):
+        visited_accounts = [False] * len(accounts)
+        emails_accounts_map = defaultdict(list)
+        res = []
+        # Build up the graph.
+        for i, account in enumerate(accounts):
+            for j in range(1, len(account)):
+                email = account[j]
+                emails_accounts_map[email].append(i)
+        
+        # Perform DFS for accounts and add to results.
+        for i, account in enumerate(accounts):
+            if not visited_accounts[i]:
+	            name, emails = account[0], set()
+	            self.dfs(i, emails, visited_accounts, accounts, emails_accounts_map)
+	            res.append([name] + sorted(emails))
+        return res
+        
+    # DFS code for traversing accounts.
+    def dfs(self, i, emails, visited_accounts, accounts, emails_accounts_map):
+        if visited_accounts[i]:
+            return
+        visited_accounts[i] = True
+        for email in accounts[i][1:]:
+            emails.add(email)
+            for neighbor in emails_accounts_map[email]:
+                self.dfs(neighbor, emails, visited_accounts, accounts, emails_accounts_map)
 
+# accounts = \
+# [["John","johnsmith@mail.com","john_newyork@mail.com"],
+# ["John","johnsmith@mail.com", "john00@mail.com"],
+# ["Mary","mary@mail.com"],["John","johnnybravo@mail.com"]]
 
-def checkCycle(g):
-	visited = [False]*g.vertices
-	recStack = [False]*g.vertices
-	for v in range(g.vertices):
-		if visited[v]==False:
-			if dfsCycle(g, v, visited, recStack):
-				return True
-	return False
-
-def dfsCycle(g, s, visited, recStack):
-	visited[s] = True
-	recStack[s] = True
-	for n in g.graph[s]:
-		if visited[n]==False and dfsCycle(g, n, visited, recStack):
-			return True
-		elif recStack[n]==True:
-			return True
-	recStack[s]=False
-	return False
-
-def checkCycle1(g):
-	visited = [False]*g.vertices
-	for v in range(g.vertices):
-		if visited[v]==False:
-			if dfsCycle1(g, v, visited):
-				return True
-	return False
-def dfsCycle1(g, s, visited):
-	visited[s] = True
-	for n in g.graph[s]:
-		if visited[n]==True:
-			return True
-		if dfsCycle1(g, n, visited):
-			return True
-	visited[s]=False
-	return False
-
-	
-# g = Graph(4)
-# g.addEdge(0, 1)
-# g.addEdge(0, 2)
-# g.addEdge(2,0)
-# g.addEdge(2,3)
-# g.addEdge(3,3)
-
-g = Graph(6)
-g.addEdge(0,1)
-g.addEdge(0,2)
-g.addEdge(1,2)
-g.addEdge(3,0)
-g.addEdge(3,4)
-g.addEdge(4,5)
-g.addEdge(5,3)
-
-print(checkCycle(g))
-print(checkCycle1(g))
+accounts = \
+[["n1","e1","e2"],
+["n1","e1", "e3"],
+["n2","e4"],
+["n3","e5"]]
+s = Solution()
+print(s.accountsMerge(accounts))

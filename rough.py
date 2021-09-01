@@ -1,20 +1,20 @@
 
-def numOfWays(m, n, dp, i=0,j=0):
-    if i==m or j==n:
-        return 0
-    if i==m-1 and j==n-1:
-        return 1
-    if dp[i][j]!=0:
-        return dp[i][j]
-    for direction in [(1,0), (0,1)]:
-        new_i = i+direction[0]
-        new_j = j+direction[1]
-        if new_i<m and new_j<n:
-            dp[new_i][new_j] += numOfWays(m,n, dp, new_i, new_j)
-    
+def subsetsWithSum_helper(arr, sum, i, subs):
+    if sum==0:
+        print(subs)
+        return
+    elif sum<0 or i<0:
+        return
+    subsetsWithSum_helper(arr, sum, i-1, subs)
+    subs.append(arr[i-1])
+    subsetsWithSum_helper(arr, sum-arr[i-1], i-1, subs)
+    subs.pop()
 
-m=7
-n=3
-dp = [[0 for i in range(n)] for j in range(m)]
-numOfWays(m,n, dp)
-print(dp[0][0])
+def subsetsWithSum(arr, sum):
+    subs = []
+    n = len(arr)-1
+    subsetsWithSum_helper(arr, sum, n, subs)
+
+arr = [2, 3, 5, 6, 8, 10]
+sum = 10
+subsetsWithSum(arr, sum)

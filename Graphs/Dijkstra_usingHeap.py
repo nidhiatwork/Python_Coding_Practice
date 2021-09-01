@@ -3,10 +3,10 @@ import heapq
 
 class Edge(object):
     
-    def __init__(self, weight, startVertex, targetVertex):
+    def __init__(self, weight, startNode, targetNode):
         self.weight = weight
-        self.startVertex = startVertex
-        self.targetVertex = targetVertex
+        self.startNode = startNode
+        self.targetNode = targetNode
 
 class Node(object):
     
@@ -21,24 +21,24 @@ class Node(object):
 
 class Algorithm(object):
 
-    def calculateShortestPath(self, startVertex):
+    def calculateShortestPath(self, startNode):
         q = []
-        startVertex.minDistance = 0
-        heapq.heappush(q, startVertex)
+        startNode.minDistance = 0
+        heapq.heappush(q, startNode)
         while q:
-            actualVertex = heapq.heappop(q)
-            for edge in actualVertex.adjacencyList:
-                u = edge.startVertex
-                v = edge.targetVertex
+            actualNode = heapq.heappop(q)
+            for edge in actualNode.adjacencyList:
+                u = edge.startNode
+                v = edge.targetNode
                 newDistance = u.minDistance + edge.weight
                 if newDistance < v.minDistance:
                     v.predecessor = u
                     v.minDistance = newDistance
                     heapq.heappush(q,v)
     
-    def getShortestPathTo(self, targetVertex):
-        print("Shortest path to vertex is ", targetVertex.minDistance)
-        node = targetVertex
+    def getShortestPathTo(self, targetNode):
+        print("Shortest path to Node is ", targetNode.minDistance)
+        node = targetNode
         while node is not None:
             print(node.name)
             node = node.predecessor
@@ -86,7 +86,7 @@ node3.adjacencyList.append(edge14)
 node3.adjacencyList.append(edge15)
 node4.adjacencyList.append(edge16)
 
-vertexList = (node1,node2,node3, node4, node5, node6, node7, node8)
+NodeList = (node1,node2,node3, node4, node5, node6, node7, node8)
 
 algorithm = Algorithm()
 algorithm.calculateShortestPath(node1)
