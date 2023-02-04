@@ -1,7 +1,7 @@
 def tellSalary():
     usd_inr_rate = 74.26
     type = ['Total', 'Base', 'Stock', 'Bonus']
-    for level in [61,62,63,64]:
+    for level in [62]:
         print("Level", level,":")
         vals = []
         s = getLevelData(level)
